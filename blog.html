@@ -1,0 +1,99 @@
+---
+layout: null
+permalink: /blog.html
+---
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Blog — Ankit Ghosh</title>
+<meta name="description" content="Notes on acoustics, anomaly detection, microscopy pipelines and industrial machine learning." />
+<meta name="theme-color" content="#05070f" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="canonical" href="https://arcan-3.github.io/blog.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Ankit Ghosh" />
+<meta property="og:title" content="Blog — Ankit Ghosh" />
+<meta property="og:description" content="Notes on acoustics, anomaly detection, microscopy pipelines and industrial machine learning." />
+<meta property="og:url" content="https://arcan-3.github.io/blog.html" />
+<meta property="og:image" content="https://arcan-3.github.io/assets/img/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="alternate" type="application/rss+xml" title="Ankit Ghosh — Blog" href="feed.xml" />
+</head>
+<body data-base="" data-title-en="Blog — Ankit Ghosh" data-title-de="Blog — Ankit Ghosh">
+<header class="top">
+  <div class="top-in">
+    <a class="mark" href="index.html"><span class="glyph">AG</span><span class="who">Ankit Ghosh</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html"><span lang="en">Home</span><span lang="de">Start</span><kbd>1</kbd></a>
+      <a href="work.html"><span lang="en">Work</span><span lang="de">Praxis</span><kbd>2</kbd></a>
+      <a href="research.html"><span lang="en">Research</span><span lang="de">Forschung</span><kbd>3</kbd></a>
+      <a href="publications.html"><span lang="en">Publications</span><span lang="de">Publikationen</span><kbd>4</kbd></a>
+      <a href="blog.html" aria-current="page"><span lang="en">Blog</span><span lang="de">Blog</span><kbd>5</kbd></a>
+      <a href="cv.html"><span lang="en">CV</span><span lang="de">CV</span><kbd>6</kbd></a>
+    </nav>
+    <div class="tools">
+      <button class="tbtn" id="lang-btn" type="button" title="Language (L)">DE</button>
+      <button class="tbtn" id="theme-btn" type="button" aria-pressed="false" title="Theme (T)">LIGHT</button>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="hero" style="padding:78px 0 26px">
+    <div class="wrap" style="text-align:left">
+      <div class="kicker">Blog</div>
+      <h1 style="font-size:clamp(36px,5.4vw,74px);margin-top:18px"><span lang="en">Working <em>notes</em>.</span><span lang="de">Arbeits<em>notizen</em>.</span></h1>
+      <p class="lede" style="margin-left:0;text-align:left">
+        <span lang="en">Short pieces on the problems I keep returning to: acoustics in bad conditions, anomaly detection that survives ambient noise, and pipelines that replace manual annotation.</span>
+        <span lang="de">Kurze Texte zu den Problemen, zu denen ich immer zurückkehre: Akustik unter schlechten Bedingungen, Anomalieerkennung, die Umgebungsgeräusche übersteht, und Pipelines, die manuelle Annotation ersetzen.</span>
+      </p>
+    </div>
+  </section>
+
+  <section style="padding-top:22px">
+    <div class="wrap">
+      <div class="post-list">
+        {% for post in site.posts %}
+        <a class="post-item rv" href="{{ post.url | relative_url }}">
+          <div class="kicker">{{ post.date | date: "%d %b %Y" }}{% if post.tags %} · {{ post.tags | join: " · " }}{% endif %}</div>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.description }}</p>
+        </a>
+        {% endfor %}
+      </div>
+      <p class="rv" style="margin-top:30px;color:var(--ink-3);font-size:14px">
+        <span lang="en">Subscribe by <a href="feed.xml">RSS</a>.</span>
+        <span lang="de">Per <a href="feed.xml">RSS</a> abonnieren.</span>
+      </p>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap foot-in">
+    <div>
+      <div class="kicker">Ankit Ghosh</div>
+      <p class="foot-note" style="margin:10px 0 0">
+        <span lang="en">Hamburg, Germany · Signal, image and time-series machine learning.</span>
+        <span lang="de">Hamburg, Deutschland · Machine Learning für Signale, Bilder und Zeitreihen.</span>
+      </p>
+      <p class="foot-note" style="margin:6px 0 0">© <span id="yr">2026</span> Ankit Ghosh</p>
+    </div>
+    <div class="foot-links">
+      <a href="mailto:ankit.ghosh@protonmail.com">Email</a>
+      <a href="https://github.com/arcan-3" rel="me noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/ankit-ghosh" rel="me noopener">LinkedIn</a>
+      <a href="https://orcid.org/0000-0001-8828-6960" rel="me noopener">ORCID</a>
+      <a href="https://scholar.google.com/citations?user=YOUR-SCHOLAR-ID" rel="me noopener">Scholar</a>
+      <a href="assets/ankit-ghosh-cv.pdf">CV (PDF)</a>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>

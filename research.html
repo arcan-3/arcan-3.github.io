@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Research — Ankit Ghosh</title>
+<meta name="description" content="aMP: a deep learning pipeline for meiosis staging in Arabidopsis thaliana; underwater acoustic source separation and chirp modulation for µAUVs." />
+<meta name="theme-color" content="#05070f" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="canonical" href="https://arcan-3.github.io/research.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Ankit Ghosh" />
+<meta property="og:title" content="Research — Ankit Ghosh" />
+<meta property="og:description" content="aMP: a deep learning pipeline for meiosis staging in Arabidopsis thaliana; underwater acoustic source separation and chirp modulation for µAUVs." />
+<meta property="og:url" content="https://arcan-3.github.io/research.html" />
+<meta property="og:image" content="https://arcan-3.github.io/assets/img/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="alternate" type="application/rss+xml" title="Ankit Ghosh — Blog" href="feed.xml" />
+</head>
+<body data-base="" data-title-en="Research — Ankit Ghosh" data-title-de="Forschung — Ankit Ghosh">
+<header class="top">
+  <div class="top-in">
+    <a class="mark" href="index.html"><span class="glyph">AG</span><span class="who">Ankit Ghosh</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html"><span lang="en">Home</span><span lang="de">Start</span><kbd>1</kbd></a>
+      <a href="work.html"><span lang="en">Work</span><span lang="de">Praxis</span><kbd>2</kbd></a>
+      <a href="research.html" aria-current="page"><span lang="en">Research</span><span lang="de">Forschung</span><kbd>3</kbd></a>
+      <a href="publications.html"><span lang="en">Publications</span><span lang="de">Publikationen</span><kbd>4</kbd></a>
+      <a href="blog.html"><span lang="en">Blog</span><span lang="de">Blog</span><kbd>5</kbd></a>
+      <a href="cv.html"><span lang="en">CV</span><span lang="de">CV</span><kbd>6</kbd></a>
+    </nav>
+    <div class="tools">
+      <button class="tbtn" id="lang-btn" type="button" title="Language (L)">DE</button>
+      <button class="tbtn" id="theme-btn" type="button" aria-pressed="false" title="Theme (T)">LIGHT</button>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="hero" style="padding:78px 0 34px">
+    <div class="wrap" style="text-align:left">
+      <div class="kicker">Research · 2013 — 2025</div>
+      <h1 style="font-size:clamp(36px,5.4vw,74px);margin-top:18px">
+        <span lang="en">Structure out of<br /><em>noise</em>.</span>
+        <span lang="de">Struktur aus<br /><em>Rauschen</em>.</span>
+      </h1>
+      <p class="lede" style="margin-left:0;text-align:left">
+        <span lang="en">A doctorate on automated staging of meiosis from live-cell confocal microscopy, and earlier work on underwater acoustics — source separation of whale echolocation clicks, and chirp modulation for micro autonomous underwater vehicles.</span>
+        <span lang="de">Eine Promotion zum automatisierten Staging der Meiose aus konfokaler Lebendzell-Mikroskopie sowie frühere Arbeiten zur Unterwasserakustik — Source Separation von Echoortungsklicks der Wale und Chirp-Modulation für autonome Kleinst-Unterwasserfahrzeuge.</span>
+      </p>
+    </div>
+  </section>
+
+  <section style="padding-top:40px">
+    <div class="wrap">
+      <div class="sec-head rv"><span class="n">01</span><h2><span lang="en">Doctoral research</span><span lang="de">Promotion</span></h2><span class="fill"></span></div>
+      <div class="pub rv">
+        <div class="meta kicker">Universität Hamburg · Jan. 2019 — Oct. 2024 · cum laude (1.7)</div>
+        <h3>aMP: Deep learning framework to characterize meiosis progression timeline in tetraploid <em>Arabidopsis thaliana</em></h3>
+        <p class="where">
+          <span lang="en">Advisor: Prof. Dr. Arp Schnittger. Second examiner: Prof. Dr. Sören Laue. Funded by the Human Frontier Science Program (HFSP).</span>
+          <span lang="de">Betreuer: Prof. Dr. Arp Schnittger. Zweitgutachter: Prof. Dr. Sören Laue. Gefördert durch das Human Frontier Science Program (HFSP).</span>
+        </p>
+        <ul lang="en" style="margin-top:20px;padding-left:19px;color:var(--ink-2)">
+          <li>Built an end-to-end pipeline replacing manual staging of meiosis from confocal live-cell imaging: anther segmentation and motion stabilisation, meiocyte localisation, tracking, and stage classification.</li>
+          <li>Segmentation and stabilisation of anthers via affine transformation to hold the focal plane across frames — <strong>Dice 88.9%, IoU 80.8%, F1 88.9%</strong> on the held-out test set.</li>
+          <li>Meiocyte localisation using an ensemble of EfficientDet backbones with non-maximum suppression, evaluated under the COCO protocol — <strong>precision 0.77, recall 0.79, F1 0.78</strong>.</li>
+          <li>Tracking through a restricted-space motion model, associating detections across frames on normalised cross-correlation and IoU, reducing computation time against unconstrained association.</li>
+          <li>Represented meiosis phases as state vectors, validated predicted sequences against a knowledge graph, and derived Z-normalised staging pathways to build a piece-wise meiotic timeline. Per-stage classification accuracy <strong>76–91%</strong>.</li>
+          <li>Applied the timeline to tetraploid <em>A. thaliana</em>: meiosis I comparable to diploid, meiosis II markedly prolonged; quantified temporal dynamics in <em>tcx5;6</em> mutants and ATM insertions.</li>
+          <li>Reused the pipeline’s modules for further quantification tasks — DNA double-strand-break foci, BiFC analysis, pollen counting.</li>
+          <li>Continued as postdoctoral researcher (Oct. 2024 — Feb. 2025) on unsupervised staging of maize meiocytes.</li>
+        </ul>
+        <ul lang="de" style="margin-top:20px;padding-left:19px;color:var(--ink-2)">
+          <li>Aufbau einer Ende-zu-Ende-Pipeline, die das manuelle Staging der Meiose aus konfokaler Lebendzell-Bildgebung ersetzt: Antheren-Segmentierung und Bewegungsstabilisierung, Meiozyten-Lokalisierung, Tracking und Stadien-Klassifikation.</li>
+          <li>Segmentierung und Stabilisierung der Antheren per affiner Transformation, um die Fokusebene über die Frames zu halten — <strong>Dice 88,9 %, IoU 80,8 %, F1 88,9 %</strong> auf dem Held-out-Testset.</li>
+          <li>Meiozyten-Lokalisierung mit einem Ensemble aus EfficientDet-Backbones und Non-Maximum Suppression, evaluiert nach COCO-Protokoll — <strong>Precision 0,77, Recall 0,79, F1 0,78</strong>.</li>
+          <li>Tracking über ein Bewegungsmodell mit eingeschränktem Suchraum; Zuordnung der Detektionen über Frames hinweg per normalisierter Kreuzkorrelation und IoU, mit geringerer Rechenzeit gegenüber unbeschränkter Assoziation.</li>
+          <li>Darstellung der Meiosephasen als State Vectors, Validierung der vorhergesagten Sequenzen gegen einen Knowledge Graph und Ableitung Z-normalisierter Staging-Pfade zur Konstruktion einer stückweisen Meiose-Timeline. Klassifikationsgenauigkeit pro Stadium <strong>76–91 %</strong>.</li>
+          <li>Anwendung der Timeline auf tetraploide <em>A. thaliana</em>: Meiose I vergleichbar mit diploid, Meiose II deutlich verlängert; Quantifizierung der zeitlichen Dynamik in <em>tcx5;6</em>-Mutanten und ATM-Insertionen.</li>
+          <li>Weiterverwendung der Pipeline-Module für weitere Quantifizierungsaufgaben — DNA-Doppelstrangbruch-Foci, BiFC-Analyse, Pollenzählung.</li>
+          <li>Fortsetzung als Postdoc (Okt. 2024 — Feb. 2025) zum unsupervised Staging von Mais-Meiozyten.</li>
+        </ul>
+        <div class="pub-foot">
+          <a class="chip" href="https://ediss.sub.uni-hamburg.de/handle/ediss/11301" rel="noopener">Open access · ediss</a>
+          <a class="chip" href="publications.html">BibTeX</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head rv"><span class="n">02</span><h2><span lang="en">Research projects</span><span lang="de">Forschungsprojekte</span></h2><span class="fill"></span></div>
+
+      <div class="pub rv">
+        <div class="meta kicker">Helmut Schmidt Universität · Jan. — Jun. 2018 · <span lang="en">grade 1.3</span><span lang="de">Note 1,3</span></div>
+        <h3><span lang="en">Master’s thesis — Source Separation and Echo Detection of Underwater Acoustic Signals of Whales</span><span lang="de">Masterarbeit — Source Separation und Echodetektion akustischer Unterwassersignale von Walen</span></h3>
+        <p class="where">
+          <span lang="en">Passive acoustic monitoring &amp; bioacoustics. Supervisor: Carlos de Obaldía, M.Sc. Examiners: Prof. Dr.-Ing. habil. Udo Zölzer, Prof. Dr. Bernd-Christian Renner.</span>
+          <span lang="de">Passives akustisches Monitoring &amp; Bioakustik. Betreuer: Carlos de Obaldía, M.Sc. Prüfer: Prof. Dr.-Ing. habil. Udo Zölzer, Prof. Dr. Bernd-Christian Renner.</span>
+        </p>
+        <ul lang="en" style="margin-top:20px;padding-left:19px;color:var(--ink-2)">
+          <li>Built a system to detect echolocation clicks of toothed whales and extract three features from them sufficient to identify species, working from passive acoustic monitoring recordings containing multiple species and ambient ship noise.</li>
+          <li>Isolated clicks from whistles, creaks and other harmonic vocalisations using generalised Wiener-filtering source separation — non-negative matrix factorization, median filtering and kernel additive modelling — compared by peak-to-noise ratio and signal-to-distortion ratio.</li>
+          <li>Derived echo decay time via Hilbert transform analysis, establishing that each click pulse carries superimposed pulses.</li>
+          <li>Separated each pulse into high- and low-energy components to detect the inlying short-term pulses and identify the frequency bands they occupy, using continuous wavelet analysis.</li>
+          <li>Estimated click length through an adapted correlation technique exploiting the band-limitation of each pulse.</li>
+          <li>Modelled shallow-water channel behaviour with synthetic impulse responses to reason about echo content when the source location is unknown.</li>
+        </ul>
+        <ul lang="de" style="margin-top:20px;padding-left:19px;color:var(--ink-2)">
+          <li>Aufbau eines Systems zur Detektion von Echoortungsklicks von Zahnwalen und zur Extraktion dreier Merkmale, die zur Artbestimmung ausreichen — auf Basis von Aufnahmen aus passivem akustischem Monitoring mit mehreren Arten und Schiffsgeräuschen.</li>
+          <li>Isolierung der Klicks von Pfiffen, Creaks und weiteren harmonischen Lautäußerungen mittels generalisierter Wiener-Filter-Source-Separation — Non-negative Matrix Factorization, Medianfilterung und Kernel Additive Modelling — verglichen über Peak-to-Noise Ratio und Signal-to-Distortion Ratio.</li>
+          <li>Bestimmung der Echo-Abklingzeit über Hilbert-Transformationsanalyse; dabei wurde gezeigt, dass jeder Klickpuls überlagerte Pulse trägt.</li>
+          <li>Zerlegung jedes Pulses in hoch- und niederenergetische Komponenten, um die enthaltenen Kurzzeitpulse zu detektieren und die von ihnen belegten Frequenzbänder mittels kontinuierlicher Wavelet-Analyse zu bestimmen.</li>
+          <li>Schätzung der Klicklänge über eine angepasste Korrelationstechnik, die die Bandbegrenzung jedes Pulses ausnutzt.</li>
+          <li>Modellierung des Flachwasserkanals mit synthetischen Impulsantworten, um Echoanteile bei unbekannter Quellposition beurteilen zu können.</li>
+        </ul>
+      </div>
+
+      <div class="pub rv">
+        <div class="meta kicker">smartPORT, TUHH · Nov. 2016 — Jun. 2017 · <span lang="en">grade 2.0</span><span lang="de">Note 2,0</span></div>
+        <h3><span lang="en">Master’s project — Chirp Modulation for Resilient Underwater Acoustic Communication</span><span lang="de">Masterprojekt — Chirp-Modulation für robuste akustische Unterwasserkommunikation</span></h3>
+        <p class="where">
+          <span lang="en">Supervisor and first examiner: Prof. Dr. Bernd-Christian Renner.</span>
+          <span lang="de">Betreuer und Erstgutachter: Prof. Dr. Bernd-Christian Renner.</span>
+        </p>
+        <ul lang="en" style="margin-top:20px;padding-left:19px;color:var(--ink-2)">
+          <li>Replaced frequency shift keying with chirp modulation for packet-based preamble synchronisation between micro autonomous underwater vehicles (µAUVs), where multipath propagation was making FSK preamble boundaries ambiguous.</li>
+          <li>Built the signal generation algorithm and evaluation chain, and characterised the acoustic modem and Tiepie Handyscope HS5 instrumentation to select a workable parameter set.</li>
+          <li>Validated across four environments of increasing realism — small container, test tank, Channel Harburg, and Außenmühle Lake — rather than in simulation alone.</li>
+          <li>Showed chirp yields a prominent correlation peak where FSK produces a multipath-distorted triangular region, <strong>reducing preamble detection delay from seconds to milliseconds</strong> across ten iterations, with robustness to both multipath and Doppler shift.</li>
+          <li>Verified the proportionality between time–bandwidth product and main-lobe power concentration, and established that the generation sampling rate could be reduced from 2 MHz to 500 kHz before spurious correlation peaks appeared — the constraint for porting to embedded hardware.</li>
+        </ul>
+        <ul lang="de" style="margin-top:20px;padding-left:19px;color:var(--ink-2)">
+          <li>Ersetzen von Frequency Shift Keying durch Chirp-Modulation für die paketbasierte Präambel-Synchronisation zwischen autonomen Kleinst-Unterwasserfahrzeugen (µAUVs), bei denen Mehrwegeausbreitung die FSK-Präambelgrenzen unscharf machte.</li>
+          <li>Aufbau des Signalgenerierungsalgorithmus und der Auswertungskette sowie Charakterisierung des akustischen Modems und der Tiepie-Handyscope-HS5-Messtechnik zur Auswahl eines praktikablen Parametersatzes.</li>
+          <li>Validierung in vier Umgebungen zunehmender Realitätsnähe — Kleinbehälter, Testtank, Kanal Harburg und Außenmühlenteich — statt allein in der Simulation.</li>
+          <li>Nachweis, dass Chirp einen ausgeprägten Korrelationspeak liefert, wo FSK einen mehrwegeverzerrten dreieckigen Bereich erzeugt, und die <strong>Präambel-Detektionsverzögerung von Sekunden auf Millisekunden</strong> senkt — über zehn Iterationen, robust gegen Mehrwege und Dopplerverschiebung.</li>
+          <li>Verifikation der Proportionalität zwischen Zeit-Bandbreite-Produkt und Leistungskonzentration der Hauptkeule; Nachweis, dass die Abtastrate der Signalerzeugung von 2 MHz auf 500 kHz reduziert werden kann, bevor Nebenpeaks auftreten — die Randbedingung für die Portierung auf Embedded-Hardware.</li>
+        </ul>
+      </div>
+
+      <div class="pub rv">
+        <div class="meta kicker">Bremen University of Applied Sciences · Oct. 2014 — Sep. 2015</div>
+        <h3><span lang="en">Channel state estimation in a water column</span><span lang="de">Kanalzustandsschätzung in der Wassersäule</span></h3>
+        <p class="where">
+          <span lang="en">Project during M.Sc. Microsystems, under Prof. Dr. Dieter Kraus, before transferring to TUHH. Coursework average 1.4.</span>
+          <span lang="de">Projekt im Rahmen des M.Sc. Microsystems bei Prof. Dr. Dieter Kraus, vor dem Wechsel an die TUHH. Notendurchschnitt der Lehrveranstaltungen 1,4.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head rv"><span class="n">03</span><h2><span lang="en">Selected activities &amp; awards</span><span lang="de">Ausgewählte Aktivitäten &amp; Auszeichnungen</span></h2><span class="fill"></span></div>
+      <div class="grid-3 rv">
+        <div class="card">
+          <div class="meta">Apr. — Jul. 2016 · Barcelona / Bydgoszcz</div>
+          <h3><span lang="en">Nanotechnology Solutions in Health — NanoMed concept study</span><span lang="de">Nanotechnology Solutions in Health — Konzeptstudie NanoMed</span></h3>
+          <p style="color:var(--mg)"><span lang="en">Erasmus+ COLiBRi seminar — judged best project</span><span lang="de">Erasmus+ COLiBRi-Seminar — als bestes Projekt ausgezeichnet</span></p>
+          <ul lang="en">
+            <li>Feasibility study for continuous monitoring of cancer treatment response: surveyed the enabling technologies and proposed a concept architecture of implantable biosensor motes, a dissolvable relay node, a wearable gateway and cloud reporting to clinicians.</li>
+            <li>Assessed candidate biosensor modalities against measurable parameters, reviewed WBAN and Bluetooth as the in-body link, and mapped the EU medical device route to market (CE marking, MDD, AIMD, clinical phases).</li>
+            <li>Built the business model canvas for the concept. Supervised by Mehmet Şükrü Kuran and Tuna Tugcu; judged best project among the participating international teams.</li>
+          </ul>
+          <ul lang="de">
+            <li>Machbarkeitsstudie zum kontinuierlichen Monitoring des Therapieansprechens bei Krebs: Überblick über die Basistechnologien und Vorschlag einer Konzeptarchitektur aus implantierbaren Biosensor-Motes, einem auflösbaren Relay-Knoten, einem Wearable-Gateway und Cloud-Reporting an behandelnde Ärzte.</li>
+            <li>Bewertung möglicher Biosensor-Modalitäten anhand messbarer Parameter, Prüfung von WBAN und Bluetooth als In-Body-Link sowie Abbildung des EU-Zulassungswegs für Medizinprodukte (CE-Kennzeichnung, MDD, AIMD, klinische Phasen).</li>
+            <li>Erstellung des Business Model Canvas für das Konzept. Betreuung durch Mehmet Şükrü Kuran und Tuna Tugcu; als bestes Projekt unter den teilnehmenden internationalen Teams ausgezeichnet.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="meta">Oct. 2013 — May 2014 · Kolkata</div>
+          <h3><span lang="en">Bachelor project — Pongopal</span><span lang="de">Bachelorprojekt — Pongopal</span></h3>
+          <p><span lang="en">Arduino-based floor-cleaning robot evaluating real-time path minimisation approaches. Grade 10/10.</span><span lang="de">Arduino-basierter Reinigungsroboter zur Bewertung von Verfahren zur Echtzeit-Pfadminimierung. Note 10/10.</span></p>
+        </div>
+        <div class="card">
+          <div class="meta"><span lang="en">Funding &amp; honours</span><span lang="de">Förderung &amp; Auszeichnungen</span></div>
+          <h3><span lang="en">Human Frontier Science Program</span><span lang="de">Human Frontier Science Program</span></h3>
+          <p><span lang="en">Doctoral research funded by HFSP. Doctorate awarded cum laude (1.7). Erasmus+ COLiBRi best project, 2016.</span><span lang="de">Promotionsforschung gefördert durch das HFSP. Promotion mit cum laude (1,7). Erasmus+ COLiBRi, bestes Projekt 2016.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap foot-in">
+    <div>
+      <div class="kicker">Ankit Ghosh</div>
+      <p class="foot-note" style="margin:10px 0 0">
+        <span lang="en">Hamburg, Germany · Signal, image and time-series machine learning.</span>
+        <span lang="de">Hamburg, Deutschland · Machine Learning für Signale, Bilder und Zeitreihen.</span>
+      </p>
+      <p class="foot-note" style="margin:6px 0 0">© <span id="yr">2026</span> Ankit Ghosh</p>
+    </div>
+    <div class="foot-links">
+      <a href="mailto:ankit.ghosh@protonmail.com">Email</a>
+      <a href="https://github.com/arcan-3" rel="me noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/ankit-ghosh" rel="me noopener">LinkedIn</a>
+      <a href="https://orcid.org/0000-0001-8828-6960" rel="me noopener">ORCID</a>
+      <a href="https://scholar.google.com/citations?user=YOUR-SCHOLAR-ID" rel="me noopener">Scholar</a>
+      <a href="assets/ankit-ghosh-cv.pdf">CV (PDF)</a>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>

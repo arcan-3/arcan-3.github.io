@@ -1,65 +1,90 @@
 # arcan-3.github.io
 
-Static site. No build step, no dependencies, no Jekyll. Edit HTML, push, done.
+Personal site for **Ankit Ghosh, PhD** — signal, image and time-series machine learning.
+Jekyll on GitHub Pages. Bilingual (EN/DE), dark/light, no build step required for the
+static pages.
 
-## Deploy
+## Deploy in three steps
 
-The repository name determines the URL. For `https://arcan-3.github.io` the repo must be
-named exactly `arcan-3.github.io` and owned by `arcan-3`.
+1. Create a repository named exactly **`arcan-3.github.io`** on GitHub.
+2. Upload **the contents of this folder** to the repository root — not the folder itself.
+   (`index.html` must sit at the root of the repo.)
+3. Repository → **Settings → Pages** → Source: *Deploy from a branch* → Branch: `main`, folder `/ (root)` → Save.
+
+The site appears at <https://arcan-3.github.io> within a minute or two.
+
+## What is where
+
+| Path | What it is |
+|---|---|
+| `index.html` | Home — hero, about, skills, quote |
+| `work.html` | Work experience timeline + education summary |
+| `research.html` | Doctorate, research projects, activities & awards (full method detail) |
+| `publications.html` | Dissertation + posters, each with copyable BibTeX |
+| `blog.html` | Blog index (Jekyll, lists `_posts`) |
+| `cv.html` | Condensed résumé, print stylesheet, PDF link |
+| `404.html` | Not-found page |
+| `_posts/` | Blog posts in Markdown — three samples to replace |
+| `_layouts/post.html` | Layout used by blog posts |
+| `assets/css/style.css` | All styling |
+| `assets/js/site.js` | Theme, language, scroll reveals, shortcuts, BibTeX copy |
+| `assets/img/profile.png` | Photo used on the home page |
+| `assets/ankit-ghosh-cv.pdf` | CV download |
+| `assets/img/og.png` | Social preview image |
+| `_config.yml` | Jekyll config, plugins, SEO defaults |
+
+## Things to fill in
+
+- **Google Scholar** — search for `YOUR-SCHOLAR-ID` and replace it in the page footers
+  (`index.html`, `work.html`, `research.html`, `publications.html`, `cv.html`,
+  `404.html`, `blog.html`, `_layouts/post.html`), or delete those links.
+- **Analytics** — an HTML comment near the top of `index.html` marks where to paste a
+  snippet (Plausible, GoatCounter, GA4). Add it to the other pages the same way if you want
+  site-wide tracking.
+- **Proofread the German.** Every page carries a German version; I wrote it, so read it
+  before publishing.
+
+## Writing a blog post
+
+Add a file to `_posts/` named `YYYY-MM-DD-some-slug.md`:
+
+```markdown
+---
+title: "Post title"
+description: "One or two sentences — shown on the blog index and in link previews."
+date: 2026-09-01
+tags: [acoustics, edge]
+---
+
+<div lang="en" markdown="1">
+English text here.
+</div>
+
+<div lang="de" markdown="1">
+Deutscher Text hier.
+</div>
+```
+
+The `lang` wrappers are what the EN/DE switch toggles. A post with only one language
+block will show in both modes.
+
+## Keyboard shortcuts
+
+`1`–`6` jump to the six pages, `L` switches language, `T` switches theme.
+
+## Local preview (optional)
+
+Plain HTML pages open directly in a browser. To render the blog locally:
 
 ```bash
-cd site
-git init
-git add .
-git commit -m "Initial site"
-git branch -M main
-git remote add origin git@github.com:arcan-3/arcan-3.github.io.git
-git push -u origin main
+bundle install
+bundle exec jekyll serve
 ```
 
-Then on GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a branch →
-Branch: `main` / `(root)` → Save.** First publish takes a couple of minutes.
+## Notes
 
-Add `.nojekyll` at the root if you ever add a directory starting with an underscore that
-you need served — `projects/_template.html` is not served as a page anyway, so this is
-only relevant later.
-
-## Structure
-
-```
-index.html                      home: hero, thread, write-up cards, contact
-assets/style.css                all styling
-assets/signal.js                the hero waveform figure
-assets/Ghosh_CV.pdf             TODO: export from Overleaf and drop in
-projects/amp-toolkit.html       doctoral work write-up
-projects/underwater-acoustics.html
-projects/_template.html         duplicate this for each new write-up
-```
-
-To add a write-up: copy `_template.html` to a real filename, write it, then add a card in
-`index.html` and remove `card--soon` from that card.
-
-## Before it goes live
-
-- [ ] Search the HTML for `TODO` and resolve every one.
-- [ ] Export the CV PDF from Overleaf to `assets/Ghosh_CV.pdf`.
-- [ ] **Check what you are allowed to publish.** BATO and Metric-space work is customer
-      work. Confirm before writing anything about a specific client, system or dataset.
-      Confirm there is no embargo on the dissertation material.
-- [ ] Add at least one real figure to `amp-toolkit.html`. A write-up with no figure reads
-      as a summary; a write-up with one good figure reads as work.
-- [ ] Update `\homepage{arcan-3.github.io}` in `resume.tex` (it is already there,
-      commented out).
-
-## Notes on the design
-
-Palette and typography are fixed in the `:root` block of `style.css`. The accent is
-`#0E7C86` from the Arcane identity, with `#1FB6C4` as the brighter variant used for the
-recovered trace, since the base teal is too dark to read against `#101418` at 2px.
-
-The hero figure computes a real signal, adds real noise at the SNR you select, and
-recovers it with a sliding quadratic fit. The method is deliberately trivial. If you
-replace it with something better, keep the note that says what it is — the figure is
-honest about being an illustration, and that is the point.
-
-Responsive to mobile, keyboard focus visible, `prefers-reduced-motion` respected.
+- Sitemap, RSS feed and SEO tags come from `jekyll-sitemap`, `jekyll-feed` and
+  `jekyll-seo-tag`, which GitHub Pages supports natively.
+- Custom domain: add a `CNAME` file containing the domain, and set `url` in `_config.yml`.
+- The visual direction is an original hextech-inspired treatment (deep indigo, cyan,
+  magenta). No third-party brand assets are used.

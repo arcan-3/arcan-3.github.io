@@ -1,0 +1,46 @@
+# Jekyll configuration — arcan-3.github.io
+title: "Ankit Ghosh"
+tagline: "Signal, image and time-series ML — research and production."
+description: >-
+  Ankit Ghosh, PhD — machine learning engineer and researcher working on the
+  recovery of structure from noisy physical measurements: acoustic, vibration,
+  optical and time-series. Technical lead for industrial AI at BATO GmbH, Hamburg.
+author: "Ankit Ghosh"
+email: ankit.ghosh@protonmail.com
+url: "https://arcan-3.github.io"
+baseurl: ""
+lang: en
+
+github_username: arcan-3
+linkedin_username: ankit-ghosh
+orcid: 0000-0001-8828-6960
+# scholar_id: PUT-YOUR-SCHOLAR-ID-HERE   # uncomment and fill in
+
+theme_color: "#7ce7e0"
+image: /assets/img/og.png
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+feed:
+  path: feed.xml
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+permalink: /blog/:title/
+
+sass:
+  style: compressed
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

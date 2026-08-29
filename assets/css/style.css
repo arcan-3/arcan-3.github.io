@@ -1,0 +1,218 @@
+
+/* Ankit Ghosh — arcan-3.github.io
+   Hextech-inspired dark theme. Roboto throughout. */
+
+:root{
+  --bg:#05070f; --bg-2:#090d1b; --panel:rgba(255,255,255,.025);
+  --ink:#eef2f8; --ink-2:#b3c1d6; --ink-3:#8496b0;
+  --cy:#7ce7e0; --cy-dim:rgba(124,231,224,.28); --cy-faint:rgba(124,231,224,.12);
+  --mg:#e879c7; --mg-dim:rgba(232,121,199,.3);
+  --line:rgba(124,231,224,.14);
+  --r:14px; --r-lg:22px;
+  --maxw:1120px;
+  --grain:.045;
+}
+html[data-theme="light"]{
+  --bg:#f2efe8; --bg-2:#e9e5db; --panel:rgba(11,18,38,.03);
+  --ink:#141a2b; --ink-2:#3d4658; --ink-3:#6b7688;
+  --cy:#0e7d78; --cy-dim:rgba(14,125,120,.35); --cy-faint:rgba(14,125,120,.09);
+  --mg:#a8266f; --mg-dim:rgba(168,38,111,.3);
+  --line:rgba(20,26,43,.12);
+  --grain:.03;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:Roboto,Helvetica,Arial,sans-serif; font-weight:300;
+  font-size:17px; line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:""; position:fixed; inset:0; z-index:9998; pointer-events:none;
+  opacity:var(--grain);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+body::after{
+  content:""; position:fixed; left:50%; top:-30vh; width:120vw; height:90vh;
+  transform:translateX(-50%); z-index:-1; pointer-events:none;
+  background:radial-gradient(50% 50% at 50% 50%, var(--cy-faint), transparent 70%);
+}
+img{max-width:100%; display:block}
+a{color:var(--cy); text-decoration:none; transition:color .18s ease}
+a:hover{color:var(--mg)}
+::selection{background:var(--mg-dim)}
+
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px}
+.mono{font-family:"Roboto Mono",ui-monospace,monospace}
+.kicker{font-family:"Roboto Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:var(--ink-3)}
+.rule{height:1px; background:linear-gradient(90deg,transparent,var(--cy-dim),transparent)}
+
+/* ---------- header ---------- */
+.top{position:sticky; top:0; z-index:60; backdrop-filter:blur(14px); background:color-mix(in oklab, var(--bg) 82%, transparent); border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw); margin:0 auto; padding:14px 28px; display:flex; align-items:center; gap:22px}
+.mark{display:flex; align-items:center; gap:11px; color:var(--ink)}
+.mark:hover{color:var(--ink)}
+.mark .glyph{width:30px; height:30px; border-radius:9px; border:1px solid var(--cy-dim); display:grid; place-items:center;
+  font-family:"Roboto Mono",monospace; font-size:12px; font-weight:500; letter-spacing:.02em; color:var(--cy);
+  box-shadow:0 0 18px var(--cy-faint) inset}
+.mark .who{font-size:14px; letter-spacing:.02em; font-weight:500; white-space:nowrap}
+.nav{margin-left:auto; display:flex; align-items:center; gap:4px; flex-wrap:wrap}
+.nav a{padding:8px 11px; border-radius:999px; font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); font-weight:400}
+.nav a:hover{color:var(--ink); background:var(--panel)}
+.nav a[aria-current="page"]{color:var(--cy); background:var(--cy-faint)}
+.nav a kbd{font-family:"Roboto Mono",monospace; font-size:9px; opacity:.45; margin-left:6px}
+.tools{display:flex; gap:8px; margin-left:8px}
+.tbtn{border:1px solid var(--line); background:transparent; color:var(--ink-3); border-radius:999px;
+  padding:7px 12px; font-family:"Roboto Mono",monospace; font-size:11px; letter-spacing:.14em; cursor:pointer; transition:.18s}
+.tbtn:hover{color:var(--cy); border-color:var(--cy-dim)}
+.tbtn[aria-pressed="true"]{color:var(--cy)}
+.burger{display:none}
+
+/* ---------- hero ---------- */
+.hero{position:relative; text-align:center; padding:112px 0 92px; overflow:hidden}
+.rings{position:absolute; left:50%; top:46%; transform:translate(-50%,-50%); pointer-events:none}
+.ring{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); border-radius:50%; border:1px solid var(--line)}
+.ring.a{width:min(820px,86vw); aspect-ratio:1}
+.ring.b{width:min(580px,62vw); aspect-ratio:1; border-color:var(--mg-dim); opacity:.5}
+.ring.c{width:min(330px,36vw); aspect-ratio:1; border-color:var(--cy-dim); opacity:.5}
+.hero h1{margin:26px 0 0; font-size:clamp(40px,7vw,104px); line-height:.94; font-weight:300; letter-spacing:-.03em}
+.hero h1 em{font-style:italic; font-weight:900; color:var(--cy); text-shadow:0 0 48px var(--cy-faint)}
+.hero .lede{margin:28px auto 0; max-width:62ch; color:var(--ink-2); font-size:18.5px}
+.name-line{font-size:14px; letter-spacing:.3em; text-transform:uppercase; color:var(--ink-3); font-family:"Roboto Mono",monospace}
+.cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:42px}
+.btn{padding:14px 30px; border-radius:999px; font-size:12px; letter-spacing:.2em; text-transform:uppercase; font-weight:500; border:1px solid transparent}
+.btn-p{background:var(--cy); color:var(--bg)}
+.btn-p:hover{background:var(--mg); color:var(--bg)}
+.btn-s{border-color:var(--cy-dim); color:var(--ink)}
+.btn-s:hover{border-color:var(--mg); color:var(--mg)}
+
+/* ---------- sections ---------- */
+section{padding:84px 0}
+.sec-head{display:flex; align-items:baseline; gap:18px; margin-bottom:38px}
+.sec-head h2{margin:0; font-size:clamp(26px,3.4vw,40px); font-weight:500; letter-spacing:-.02em}
+.sec-head .n{font-family:"Roboto Mono",monospace; font-size:12px; color:var(--mg); letter-spacing:.2em}
+.sec-head .fill{flex:1; height:1px; background:var(--line)}
+
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:26px; padding-top:34px; border-top:1px solid var(--line); margin-top:80px}
+.stats .v{font-family:"Roboto Mono",monospace; font-size:26px; color:var(--cy); font-weight:400}
+.stats .l{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-3); margin-top:8px; line-height:1.5}
+
+.about{display:grid; grid-template-columns:180px 1fr; gap:44px; align-items:start}
+.avatar{width:150px; height:150px; border-radius:50%; object-fit:cover; border:1px solid var(--cy-dim); box-shadow:0 0 0 8px var(--cy-faint)}
+.about p{color:var(--ink-2); margin:0 0 18px}
+.about p:last-child{margin-bottom:0}
+
+.grid-3{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px}
+.card{border:1px solid var(--line); border-radius:var(--r-lg); padding:26px 26px 28px; background:var(--panel); transition:.22s}
+.card:hover{border-color:var(--cy-dim); transform:translateY(-3px)}
+.card h3{margin:0 0 6px; font-size:18px; font-weight:500}
+.card .meta{font-family:"Roboto Mono",monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3)}
+.card p{color:var(--ink-2); font-size:15.5px; margin:12px 0 0}
+.card ul{color:var(--ink-2); font-size:15.5px; margin:12px 0 0; padding-left:18px}
+.card li{margin:6px 0}
+
+.skills{display:grid; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden}
+.skill{display:grid; grid-template-columns:210px 1fr; gap:22px; padding:20px 26px; background:var(--bg)}
+.skill dt{font-family:"Roboto Mono",monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--cy); margin:0}
+.skill dd{margin:0; color:var(--ink-2); font-size:15.5px}
+
+/* ---------- timeline ---------- */
+.tl{position:relative; padding-left:34px}
+.tl::before{content:""; position:absolute; left:7px; top:6px; bottom:6px; width:1px; background:linear-gradient(180deg,var(--cy-dim),var(--line) 60%,transparent)}
+.tl-item{position:relative; padding:0 0 52px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:""; position:absolute; left:-31px; top:9px; width:15px; height:15px; border-radius:50%;
+  border:1px solid var(--cy-dim); background:var(--bg); box-shadow:0 0 0 4px var(--bg), 0 0 16px var(--cy-faint)}
+.tl-item.now::before{background:var(--cy); border-color:var(--cy)}
+.tl-when{font-family:"Roboto Mono",monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--mg)}
+.tl-item h3{margin:8px 0 2px; font-size:21px; font-weight:500; letter-spacing:-.01em}
+.tl-org{color:var(--ink-2); font-size:15.5px}
+.tl-org .loc{color:var(--ink-3)}
+.tl-item ul{margin:16px 0 0; padding-left:19px; color:var(--ink-2); font-size:16px}
+.tl-item li{margin:9px 0}
+.tl-item li strong{color:var(--ink); font-weight:500}
+
+/* ---------- publications ---------- */
+.pub{border:1px solid var(--line); border-radius:var(--r-lg); padding:28px; background:var(--panel); margin-bottom:18px}
+.pub h3{margin:10px 0 6px; font-size:20px; font-weight:500; line-height:1.35}
+.pub .where{color:var(--ink-2); font-size:15px}
+.pub-foot{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:20px}
+.chip{border:1px solid var(--line); background:transparent; color:var(--ink-3); border-radius:999px; padding:8px 15px;
+  font-family:"Roboto Mono",monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; cursor:pointer; transition:.18s}
+.chip:hover{color:var(--cy); border-color:var(--cy-dim)}
+.bib{display:none; margin-top:16px; padding:18px; border-radius:var(--r); background:var(--bg-2); border:1px solid var(--line);
+  font-family:"Roboto Mono",monospace; font-size:12px; line-height:1.7; color:var(--ink-2); white-space:pre-wrap; overflow-x:auto}
+.bib.open{display:block}
+
+/* ---------- posts ---------- */
+.post-list{display:grid; gap:18px}
+.post-item{border:1px solid var(--line); border-radius:var(--r-lg); padding:28px; background:var(--panel); transition:.22s}
+.post-item:hover{border-color:var(--cy-dim); transform:translateY(-3px)}
+.post-item h3{margin:10px 0 8px; font-size:22px; font-weight:500}
+.post-item p{color:var(--ink-2); margin:0}
+.prose{max-width:70ch; margin:0 auto}
+.prose h2{font-size:26px; font-weight:500; margin:52px 0 14px; letter-spacing:-.01em}
+.prose h3{font-size:19px; font-weight:500; margin:36px 0 10px}
+.prose p,.prose li{color:var(--ink-2); font-size:18px}
+.prose blockquote{margin:32px 0; padding:4px 0 4px 24px; border-left:2px solid var(--mg-dim); color:var(--ink); font-style:italic}
+.prose code{font-family:"Roboto Mono",monospace; font-size:.88em; background:var(--panel); padding:2px 6px; border-radius:6px; color:var(--cy)}
+
+/* ---------- cv page ---------- */
+.cv-head{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; padding-bottom:26px; border-bottom:1px solid var(--line)}
+.cv-block{padding:34px 0; border-bottom:1px solid var(--line)}
+.cv-block:last-child{border-bottom:0}
+.cv-block h2{margin:0 0 22px; font-size:13px; letter-spacing:.26em; text-transform:uppercase; color:var(--cy); font-family:"Roboto Mono",monospace; font-weight:400}
+.cv-row{display:grid; grid-template-columns:1fr auto; gap:10px 24px; padding:12px 0}
+.cv-row .r-t{font-size:17px; font-weight:500}
+.cv-row .r-s{color:var(--ink-2); font-size:15px}
+.cv-row .r-d{font-family:"Roboto Mono",monospace; font-size:11.5px; letter-spacing:.12em; color:var(--ink-3); text-align:right; white-space:nowrap}
+
+/* ---------- quote / footer ---------- */
+.quote{text-align:center; padding:96px 0}
+.quote p{max-width:56ch; margin:0 auto; font-size:clamp(20px,2.6vw,29px); line-height:1.5; font-weight:300; font-style:italic; color:var(--ink)}
+.quote cite{display:block; margin-top:20px; font-style:normal; font-family:"Roboto Mono",monospace; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:var(--ink-3)}
+
+footer{border-top:1px solid var(--line); padding:52px 0 64px; margin-top:40px}
+.foot-in{display:flex; justify-content:space-between; gap:28px; flex-wrap:wrap; align-items:flex-start}
+.foot-links{display:flex; gap:10px; flex-wrap:wrap}
+.foot-links a{border:1px solid var(--line); border-radius:999px; padding:9px 16px; font-family:"Roboto Mono",monospace;
+  font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3)}
+.foot-links a:hover{color:var(--cy); border-color:var(--cy-dim)}
+.foot-note{color:var(--ink-3); font-size:13px}
+
+/* ---------- reveals / i18n ---------- */
+.rv{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease}
+.rv.in{opacity:1; transform:none}
+html[data-lang="en"] [lang="de"]{display:none}
+html[data-lang="de"] [lang="en"]{display:none}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1; transform:none; transition:none}
+  html{scroll-behavior:auto}
+}
+
+@media (max-width:1040px){
+  .about{grid-template-columns:1fr; gap:26px}
+  .skill{grid-template-columns:1fr; gap:8px}
+  .cv-row{grid-template-columns:1fr}
+  .cv-row .r-d{text-align:left}
+  .nav a kbd{display:none}
+  .top-in{flex-wrap:wrap}
+  .nav{margin-left:0; width:100%; order:3}
+}
+
+@media (max-width:860px){
+  section{padding:58px 0}
+}
+
+@media print{
+  body::before,body::after,.top,footer,.tools,.cta,.rings{display:none !important}
+  body{background:#fff; color:#111; font-size:10.5pt; line-height:1.45}
+  html[data-lang="en"] [lang="de"],html[data-lang="de"] [lang="en"]{display:none}
+  a{color:#111; text-decoration:none}
+  .wrap{max-width:none; padding:0}
+  .cv-block{padding:12pt 0; border-color:#ccc; break-inside:avoid}
+  .cv-block h2{color:#111; font-size:9pt}
+  .rv{opacity:1 !important; transform:none !important}
+  @page{margin:14mm}
+}
