@@ -3,172 +3,229 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ankit Ghosh — signal and image processing</title>
-<meta name="description" content="Machine learning on physical measurements: acoustic, optical and time-series. Write-ups on microscopy image analysis, underwater acoustics and industrial AI.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
+<title>Ankit Ghosh — signal recovery, machine learning</title>
+<meta name="description" content="Machine learning engineer and researcher in Hamburg. Twelve years recovering structure from degraded physical measurements: underwater acoustics, live-cell microscopy, industrial sensor data.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #101418; }
+  body { -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #1FB6C4; text-decoration: none; }
+  a:hover { color: #E4EAF0; }
+  :focus-visible { outline: 2px solid #1FB6C4; outline-offset: 4px; }
+  input[type="range"] { -webkit-appearance: none; appearance: none; background: transparent; }
+  input[type="range"]::-webkit-slider-runnable-track { height: 2px; background: #2A333D; }
+  input[type="range"]::-moz-range-track { height: 2px; background: #2A333D; }
+  input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; margin-top: -6px; border-radius: 50%; background: #1FB6C4; border: none; }
+  input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: #1FB6C4; border: none; }
+
+  .rowlink { transition: background 200ms ease; }
+  .rowlink:hover { background: rgba(31,182,196,0.05); }
+  [data-reveal] { will-change: opacity, transform; }
+</style>
+
 </head>
 <body>
 
-<header class="topbar">
-  <div class="wrap topbar__inner">
-    <a class="mark" href="./">
-      <svg width="22" height="14" viewBox="0 0 22 14" fill="none" aria-hidden="true">
-        <path d="M1 7 H5 L7 2 L10 12 L13 5 L15 9 H21" stroke="#1FB6C4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      Ankit Ghosh
-    </a>
-    <nav>
-      <a href="#thread">Thread</a>
-      <a href="#writeups">Write-ups</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
 
-<main>
+<div style="background: #101418; color: #97A3B0; font-family: 'IBM Plex Sans', system-ui, sans-serif; font-weight: 300; overflow-x: clip;">
 
-  <!-- ============================ HERO ============================ -->
-  <section class="wrap hero">
-    <h1>Getting structure back out of <span>noisy measurements.</span></h1>
+  <nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; padding: 16px clamp(18px, 3vw, 28px); font-family: 'IBM Plex Mono', monospace; font-size: clamp(10px, 1.1vw, 12px); letter-spacing: 0.14em; text-transform: uppercase; color: #5B6773; background: rgba(16,20,24,0.72); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(151,163,176,0.08);">
+    <span style="color: #E4EAF0;">Ankit Ghosh</span>
+    <span style="display: flex; gap: clamp(12px, 2vw, 22px); align-items: center;">
+      <a href="#thread" style="color: #5B6773;" class="rowlink">Thread</a>
+      <a href="#constraint" style="color: #5B6773;" class="rowlink">Constraint</a>
+      <a href="#contact" style="color: #5B6773;" class="rowlink">Contact</a>
+    </span>
+  </nav>
 
-    <p class="lede narrow">
-      For twelve years I have worked on one problem in different physics: something
-      real is happening, the sensor gives you a degraded version of it, and you have
-      to recover enough to act on. Water columns, whale clicks, vibrating machinery,
-      living cells under a microscope that you are not allowed to illuminate properly.
-    </p>
+  <section style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 28px 80px; max-width: 1180px; margin: 0 auto;">
+    <p data-reveal="1" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #0E7C86; margin: 0 0 28px;">Signal recovery — Hamburg</p>
+    <h1 data-reveal="1" style="font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: clamp(30px, 5.2vw, 68px); line-height: 1.04; letter-spacing: -0.02em; color: #E4EAF0; margin: 0; max-width: 20ch; text-wrap: pretty;">Something real happened. The sensor gave you less.</h1>
+    <p data-reveal="1" style="font-size: clamp(16px, 1.6vw, 21px); line-height: 1.55; color: #97A3B0; margin: 28px 0 0; max-width: 46ch;">Machine learning engineer and researcher. Twelve years recovering enough of the original to act on it — in water, in RF, in photons, on the plant floor.</p>
 
-    <!-- SIGNATURE ELEMENT -->
-    <div class="scope">
-      <div class="scope__legend">
-        <span><i class="swatch swatch--noisy"></i> Measured</span>
-        <span><i class="swatch swatch--clean"></i> Recovered</span>
+    <figure data-reveal="1" style="margin: 56px 0 0; padding: 0;">
+      <div style="border: 1px solid rgba(151,163,176,0.12); background: #171D24; border-radius: 4px; overflow: hidden;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 14px 18px; border-bottom: 1px solid rgba(151,163,176,0.1); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #5B6773; flex-wrap: wrap;">
+          <span>Fig. 1 — one signal, measured and recovered</span>
+          <span style="display: flex; gap: 18px; align-items: center;">
+            <span style="display: flex; gap: 7px; align-items: center;"><span style="width: 14px; height: 2px; background: #5B6773; display: inline-block;"></span>measured</span>
+            <span style="display: flex; gap: 7px; align-items: center;"><span style="width: 14px; height: 2px; background: #1FB6C4; display: inline-block;"></span>recovered</span>
+          </span>
+        </div>
+        <canvas id="hero-canvas" style="display: block; width: 100%; height: 46vh; min-height: 260px; max-height: 420px;"></canvas>
+        <div style="display: flex; align-items: center; gap: 20px; padding: 16px 18px 20px; border-top: 1px solid rgba(151,163,176,0.1); flex-wrap: wrap;">
+          <label for="snr" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #5B6773; white-space: nowrap;">Signal-to-noise</label>
+          <input id="snr" type="range" min="-6" max="24" step="0.5" value="14" aria-label="Signal to noise ratio in decibels" style="flex: 1 1 200px; height: 14px; cursor: ew-resize;" />
+          <output for="snr" style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #E4EAF0; min-width: 8ch; text-align: right;">+14.0 dB</output>
+        </div>
       </div>
+      <figcaption style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.7; color: #5B6773; margin: 14px 0 0; max-width: 68ch;">Computed live in your browser: a chirp with a slow carrier, Gaussian noise scaled to the chosen SNR, recovered with a sliding quadratic fit. An illustration of the problem, not a demonstration of my methods.</figcaption>
+    </figure>
+  </section>
 
-      <svg id="scope" class="scope__frame" viewBox="0 0 1000 260" role="img"
-           aria-label="A waveform shown twice: the noisy measured version and a recovered version. A slider changes the signal-to-noise ratio.">
-        <path id="trace-noisy" fill="none" stroke="#5B6773" stroke-width="1" stroke-linejoin="round"/>
-        <path id="trace-clean" fill="none" stroke="#1FB6C4" stroke-width="2" stroke-linejoin="round"/>
-      </svg>
+  <section id="thread" style="position: relative; height: 660vh;">
+    <div style="position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 92px 28px 40px; overflow: hidden;">
+      <div style="max-width: 1180px; margin: 0 auto; width: 100%;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px; margin-bottom: 6vh; flex-wrap: wrap;">
+          <h2 style="font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: clamp(20px, 2.4vw, 30px); letter-spacing: -0.01em; color: #E4EAF0; margin: 0;">The medium changes. The problem doesn't.</h2>
+          <span id="thread-counter" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.16em; color: #5B6773;">01 / 07</span>
+        </div>
 
-      <div class="scope__controls">
-        <label for="snr">Signal-to-noise</label>
-        <input id="snr" type="range" min="-6" max="24" value="6" step="1">
-        <span class="scope__readout" id="snr-readout">6 dB</span>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(20px, 5vw, 72px); align-items: center;">
+          <div style="position: relative; border: 1px solid rgba(151,163,176,0.12); background: #171D24; border-radius: 4px; padding: 16px;">
+            <canvas id="stage-canvas" style="display: block; width: 100%; height: 26vh; min-height: 130px; max-height: 300px;"></canvas>
+            <span id="thread-medium" style="position: absolute; left: 20px; bottom: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #0E7C86;">Water column</span>
+          </div>
+
+          <div style="position: relative; min-height: max(230px, 32vh);">
+            
+              <div id="stage-panel-0" data-stage-panel style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center;">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.18em; color: #1FB6C4; margin: 0 0 14px;">2014 — 15</p>
+                <h3 style="font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: clamp(22px, 3vw, 40px); line-height: 1.1; letter-spacing: -0.02em; color: #E4EAF0; margin: 0 0 18px; text-wrap: pretty;">Bremen University of Applied Sciences</h3>
+                <p style="font-size: clamp(15px, 1.3vw, 18px); line-height: 1.6; color: #97A3B0; margin: 0; max-width: 42ch; text-wrap: pretty;">Channel state estimation in a water column. Acoustic propagation: work out what the medium did to the signal before you try to read the signal.</p>
+              </div>
+            
+              <div id="stage-panel-1" data-stage-panel style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center;">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.18em; color: #1FB6C4; margin: 0 0 14px;">2016 — 17</p>
+                <h3 style="font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: clamp(22px, 3vw, 40px); line-height: 1.1; letter-spacing: -0.02em; color: #E4EAF0; margin: 0 0 18px; text-wrap: pretty;">Institute smartPORT, TUHH</h3>
+                <p style="font-size: clamp(15px, 1.3vw, 18px); line-height: 1.6; color: #97A3B0; margin: 0; max-width: 42ch; text-wrap: pretty;">Chirp modulation for underwater acoustic communication. Cut preamble detection delay from seconds to milliseconds against frequency shift keying, tested in a container, a tank, a canal and a lake.</p>
+              </div>
+            
+              <div id="stage-panel-2" data-stage-panel style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center;">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.18em; color: #1FB6C4; margin: 0 0 14px;">2017 — 18</p>
+                <h3 style="font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: clamp(22px, 3vw, 40px); line-height: 1.1; letter-spacing: -0.02em; color: #E4EAF0; margin: 0 0 18px; text-wrap: pretty;">Helmut Schmidt University</h3>
+                <p style="font-size: clamp(15px, 1.3vw, 18px); line-height: 1.6; color: #97A3B0; margin: 0; max-width: 42ch; text-wrap: pretty;">Master&#39;s thesis. Wiener-filtering source separation to pull toothed-whale echolocation clicks out of a multipath channel, then three features from each click to identify the species.</p>
+              </div>
+            
+              <div id="stage-panel-3" data-stage-panel style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center;">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.18em; color: #1FB6C4; margin: 0 0 14px;">2019 — 24</p>
+                <h3 style="font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: clamp(22px, 3vw, 40px); line-height: 1.1; letter-spacing: -0.02em; color: #E4EAF0; margin: 0 0 18px; text-wrap: pretty;">Universität Hamburg</h3>
+                <p style="font-size: clamp(15px, 1.3vw, 18px); line-height: 1.6; color: #97A3B0; margin: 0; max-width: 42ch; text-wrap: pretty;">Doctorate in machine learning and image processing. Built aMP, an end-to-end pipeline for automated staging of meiosis in live-cell confocal microscopy — under illumination the cell has to survive.</p>
+              </div>
+            
+              <div id="stage-panel-4" data-stage-panel style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center;">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.18em; color: #1FB6C4; margin: 0 0 14px;">2021 — 24</p>
+                <h3 style="font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: clamp(22px, 3vw, 40px); line-height: 1.1; letter-spacing: -0.02em; color: #E4EAF0; margin: 0 0 18px; text-wrap: pretty;">Metric-space</h3>
+                <p style="font-size: clamp(15px, 1.3vw, 18px); line-height: 1.6; color: #97A3B0; margin: 0; max-width: 42ch; text-wrap: pretty;">Vibroacoustic predictive maintenance, real-time acoustic event detection on Jetson edge hardware, unsupervised time-series clustering, anomaly detection on infrared imagery.</p>
+              </div>
+            
+              <div id="stage-panel-5" data-stage-panel style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center;">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.18em; color: #1FB6C4; margin: 0 0 14px;">2025</p>
+                <h3 style="font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: clamp(22px, 3vw, 40px); line-height: 1.1; letter-spacing: -0.02em; color: #E4EAF0; margin: 0 0 18px; text-wrap: pretty;">Aidy Health</h3>
+                <p style="font-size: clamp(15px, 1.3vw, 18px); line-height: 1.6; color: #97A3B0; margin: 0; max-width: 42ch; text-wrap: pretty;">Wi-Fi Channel State Information for passive sensing. The 2014 channel-estimation problem again, in RF instead of water, eleven years later.</p>
+              </div>
+            
+              <div id="stage-panel-6" data-stage-panel style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center;">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.18em; color: #1FB6C4; margin: 0 0 14px;">2025 — now</p>
+                <h3 style="font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: clamp(22px, 3vw, 40px); line-height: 1.1; letter-spacing: -0.02em; color: #E4EAF0; margin: 0 0 18px; text-wrap: pretty;">BATO GmbH</h3>
+                <p style="font-size: clamp(15px, 1.3vw, 18px); line-height: 1.6; color: #97A3B0; margin: 0; max-width: 42ch; text-wrap: pretty;">Technical lead, industrial AI. Predictive maintenance and operator decision support, deployed on customer premises with no cloud dependency.</p>
+              </div>
+            
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 8px; margin-top: 6vh;">
+          
+            <span id="stage-tick-0" data-stage-tick style="height: 2px; flex: 1 1 0; background: #2A333D;"></span>
+          
+            <span id="stage-tick-1" data-stage-tick style="height: 2px; flex: 1 1 0; background: #2A333D;"></span>
+          
+            <span id="stage-tick-2" data-stage-tick style="height: 2px; flex: 1 1 0; background: #2A333D;"></span>
+          
+            <span id="stage-tick-3" data-stage-tick style="height: 2px; flex: 1 1 0; background: #2A333D;"></span>
+          
+            <span id="stage-tick-4" data-stage-tick style="height: 2px; flex: 1 1 0; background: #2A333D;"></span>
+          
+            <span id="stage-tick-5" data-stage-tick style="height: 2px; flex: 1 1 0; background: #2A333D;"></span>
+          
+            <span id="stage-tick-6" data-stage-tick style="height: 2px; flex: 1 1 0; background: #2A333D;"></span>
+          
+        </div>
       </div>
-
-      <p class="scope__note">
-        Drag it down. The measurement falls apart long before the underlying signal does.
-        Low-dose imaging, passive sonar and a bearing failing inside a running machine are all
-        this picture. The recovery drawn here is a sliding quadratic fit — a deliberately
-        trivial method, because the figure is about the problem, not about the answer.
-      </p>
     </div>
   </section>
 
-  <!-- ============================ THREAD ============================ -->
-  <section class="wrap band" id="thread">
-    <p class="eyebrow">The same problem, four media</p>
-    <h2>One question, twelve years</h2>
-    <p class="narrow" style="margin-bottom:2.5rem">
-      These look like unrelated fields on a CV. They are the same estimation problem
-      with the physics swapped out.
-    </p>
-
-    <ul class="thread">
-      <li>
-        <span class="yr">2014 — 2015</span>
-        <span class="what">Channel estimation in a water column</span>
-        <span class="med">Bremen UAS · acoustic propagation</span>
-      </li>
-      <li>
-        <span class="yr">2016 — 2018</span>
-        <span class="what">Underwater communication, then passive sonar</span>
-        <span class="med">TUHH smartPORT · Helmut Schmidt University</span>
-      </li>
-      <li>
-        <span class="yr">2019 — 2024</span>
-        <span class="what">Live-cell microscopy under photon limits</span>
-        <span class="med">Universität Hamburg · doctorate</span>
-      </li>
-      <li>
-        <span class="yr">2021 — now</span>
-        <span class="what">Industrial sensor data and RF sensing</span>
-        <span class="med">Metric-space · Aidy Health · BATO</span>
-      </li>
-    </ul>
+  <section style="max-width: 1180px; margin: 0 auto; padding: 14vh 28px;">
+    <p data-reveal="1" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #5B6773; margin: 0 0 22px;">Also</p>
+    <div data-reveal="1" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; border-top: 1px solid rgba(151,163,176,0.12); padding-top: 28px;">
+      <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #97A3B0;"><span style="font-family: 'IBM Plex Mono', monospace; color: #E4EAF0;">DNV, 2017–19.</span> Grid harmonic analysis and IEC standards implementation.</p>
+      <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #97A3B0;"><span style="font-family: 'IBM Plex Mono', monospace; color: #E4EAF0;">Basler AG, 2015–16.</span> Machine vision for print registration control.</p>
+    </div>
   </section>
 
-  <!-- ============================ WRITE-UPS ============================ -->
-  <section class="wrap band" id="writeups">
-    <p class="eyebrow">Write-ups</p>
-    <h2>Work in more detail than a CV allows</h2>
-    <p class="narrow" style="margin-bottom:2.5rem">
-      Longer accounts of what the problem actually was, what I tried, and what did not work.
-    </p>
+  <section id="constraint" style="background: #171D24; border-top: 1px solid rgba(151,163,176,0.08); border-bottom: 1px solid rgba(151,163,176,0.08);">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 16vh 28px;">
+      <p data-reveal="1" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #0E7C86; margin: 0 0 30px;">The microscopy constraint</p>
+      <h2 data-reveal="1" style="font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: clamp(26px, 4vw, 54px); line-height: 1.08; letter-spacing: -0.02em; color: #E4EAF0; margin: 0; max-width: 24ch; text-wrap: pretty;">Photons are the budget, and the subject sets it.</h2>
+      <div data-reveal="1" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(28px, 5vw, 80px); margin-top: 8vh;">
+        <div>
+          <p style="font-size: clamp(16px, 1.5vw, 20px); line-height: 1.6; color: #97A3B0; margin: 0 0 22px;">In live-cell confocal microscopy every photon you add improves signal-to-noise and damages the living cell. So all usable data is deliberately under-illuminated: the images you get are the ones the specimen survived.</p>
+          <p style="font-size: clamp(16px, 1.5vw, 20px); line-height: 1.6; color: #97A3B0; margin: 0;">My doctorate built the aMP Toolkit on that constraint — automated staging of meiosis in exactly this under-exposed regime. It is the same trade-off as dose reduction in medical imaging, and the same trade-off as a passive receiver that cannot ask the channel for more energy.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; justify-content: center; gap: 18px;">
+          <canvas id="dose-canvas" style="display: block; width: 100%; height: 220px; border: 1px solid rgba(151,163,176,0.12); border-radius: 4px; background: #101418;"></canvas>
+          <p style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.7; color: #5B6773; margin: 0;">Fig. 2 — schematic. Image quality rises with dose; viable observation time falls. The working window is where both are still acceptable. Axes are unlabelled deliberately: <span style="color: #97A3B0;">[ numbers to be supplied ]</span>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <div class="cards">
-      <a class="card" href="projects/amp-toolkit.html">
-        <span class="tag">Doctoral work · 2019–2024</span>
-        <h3>Staging cell division from live-cell microscopy</h3>
-        <p>Tracking many near-identical objects across time-lapse volumes acquired at
-           deliberately low illumination, and constraining the model so it cannot predict
-           a biologically impossible sequence.</p>
+  <section style="max-width: 1180px; margin: 0 auto; padding: 16vh 28px;">
+    <p data-reveal="1" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #5B6773; margin: 0 0 30px;">Write-ups</p>
+    <h2 data-reveal="1" style="font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: clamp(24px, 3.2vw, 40px); line-height: 1.1; letter-spacing: -0.02em; color: #E4EAF0; margin: 0 0 8vh; max-width: 26ch;">Longer form, one problem at a time.</h2>
+    <div data-reveal="1">
+      <a href="underwater-acoustics.html" style="display: flex; flex-wrap: wrap; gap: 12px clamp(16px, 3vw, 48px); align-items: baseline; padding: 30px 0; border-top: 1px solid rgba(151,163,176,0.12); color: #97A3B0;" class="rowlink">
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #5B6773;">01</span>
+        <span style="flex: 1 1 240px; min-width: 0;"><span style="display: block; font-family: 'IBM Plex Mono', monospace; font-size: clamp(17px, 1.8vw, 24px); color: #E4EAF0; margin-bottom: 10px;">Beat frequency shift keying under Doppler</span><span style="display: block; font-size: 16px; line-height: 1.55;">Replacing frequency shift keying for preamble synchronisation between micro AUVs, and taking it from a container to a lake.</span></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #5B6773;">In preparation</span>
       </a>
-
-      <a class="card" href="projects/underwater-acoustics.html">
-        <span class="tag">2014–2018</span>
-        <h3>Four years underwater</h3>
-        <p>Channel estimation, chirp modulation for Doppler-resilient communication, and
-           separating whale clicks from a multipath channel. Where the rest of the work
-           came from.</p>
+      <a href="amp-toolkit.html" style="display: flex; flex-wrap: wrap; gap: 12px clamp(16px, 3vw, 48px); align-items: baseline; padding: 30px 0; border-top: 1px solid rgba(151,163,176,0.12); color: #97A3B0;" class="rowlink">
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #5B6773;">02</span>
+        <span style="flex: 1 1 240px; min-width: 0;"><span style="display: block; font-family: 'IBM Plex Mono', monospace; font-size: clamp(17px, 1.8vw, 24px); color: #E4EAF0; margin-bottom: 10px;">The photon budget</span><span style="display: block; font-size: 16px; line-height: 1.55;">Automated staging of meiosis when the illumination is capped by what the cell survives.</span></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #5B6773;">In preparation</span>
       </a>
-
-      <!-- Duplicate projects/_template.html for each new write-up.
-           Remove card--soon once the page exists. -->
-      <a class="card card--soon" href="#">
-        <span class="tag">Essay</span>
-        <h3>Why acoustic, optical and RF are the same job</h3>
-        <p>In progress.</p>
-      </a>
-
-      <a class="card card--soon" href="#">
-        <span class="tag">Industrial AI</span>
-        <h3>Deploying models where there is no cloud</h3>
-        <p>In progress.</p>
+      <a href="#" style="display: flex; flex-wrap: wrap; gap: 12px clamp(16px, 3vw, 48px); align-items: baseline; padding: 30px 0; border-top: 1px solid rgba(151,163,176,0.12); border-bottom: 1px solid rgba(151,163,176,0.12); color: #97A3B0;" class="rowlink">
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #5B6773;">03</span>
+        <span style="flex: 1 1 240px; min-width: 0;"><span style="display: block; font-family: 'IBM Plex Mono', monospace; font-size: clamp(17px, 1.8vw, 24px); color: #E4EAF0; margin-bottom: 10px;">Channel state, from water to Wi-Fi</span><span style="display: block; font-size: 16px; line-height: 1.55;">The same estimation problem eleven years apart: an acoustic column in 2014, Wi-Fi CSI for passive sensing in 2025.</span></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #5B6773;">In preparation</span>
       </a>
     </div>
   </section>
 
-  <!-- ============================ CONTACT ============================ -->
-  <section class="wrap band" id="contact">
-    <p class="eyebrow">Contact</p>
-    <h2>Hamburg, Germany</h2>
-    <p class="narrow">
-      I lead industrial AI at BATO GmbH. I am interested in work on image formation,
-      signal recovery and sensing — particularly where the measurement itself is the
-      hard part.
-    </p>
-    <p><a href="mailto:ankit.ghosh@protonmail.com">ankit.ghosh@protonmail.com</a></p>
+  <section id="contact" style="border-top: 1px solid rgba(151,163,176,0.08);">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 16vh 28px 12vh;">
+      <h2 data-reveal="1" style="font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: clamp(26px, 4vw, 52px); line-height: 1.08; letter-spacing: -0.02em; color: #E4EAF0; margin: 0 0 8vh; max-width: 22ch;">Hamburg. Open to research and applied work.</h2>
+      <div data-reveal="1" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 28px; font-family: 'IBM Plex Mono', monospace; font-size: 14px;">
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <span style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #5B6773;">Email</span>
+          <span style="color: #97A3B0;">[ email — placeholder ]</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <span style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #5B6773;">GitHub</span>
+          <a href="https://github.com/arcan-3" style="color: #1FB6C4;">github.com/arcan-3</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <span style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #5B6773;">LinkedIn</span>
+          <a href="https://www.linkedin.com/in/ankit-ghosh" style="color: #1FB6C4;">linkedin.com/in/ankit-ghosh</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <span style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #5B6773;">CV</span>
+          <a href="Ghosh_CV.pdf" style="color: #1FB6C4;">Ghosh_CV.pdf</a>
+        </div>
+      </div>
+    </div>
   </section>
 
-</main>
+  <footer style="border-top: 1px solid rgba(151,163,176,0.08); padding: 28px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #5B6773; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+    <span>Ankit Ghosh — Hamburg</span>
+    <span>Machine learning · signal recovery</span>
+  </footer>
+</div>
 
-<footer class="foot">
-  <div class="wrap foot__inner">
-    <p>Ankit Ghosh · Hamburg</p>
-    <ul>
-      <!-- TODO: export the Awesome-CV PDF into assets/ and keep this link current. -->
-      <li><a href="assets/Ghosh_CV.pdf">CV (PDF)</a></li>
-      <li><a href="https://github.com/arcan-3">GitHub</a></li>
-      <li><a href="https://www.linkedin.com/in/ankit-ghosh">LinkedIn</a></li>
-    </ul>
-  </div>
-</footer>
-
-<script src="assets/signal.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

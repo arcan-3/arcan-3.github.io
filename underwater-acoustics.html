@@ -4,26 +4,26 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Four years underwater — Ankit Ghosh</title>
-<meta name="description" content="Channel estimation, chirp-modulated communication and passive sonar source separation, 2014–2018.">
+<meta name="description" content="Channel estimation in a water column, chirp modulation for micro AUV communication, and separating whale echolocation clicks from a multipath channel.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="topbar">
   <div class="wrap topbar__inner">
-    <a class="mark" href="../">
+    <a class="mark" href="index.html">
       <svg width="22" height="14" viewBox="0 0 22 14" fill="none" aria-hidden="true">
         <path d="M1 7 H5 L7 2 L10 12 L13 5 L15 9 H21" stroke="#1FB6C4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       Ankit Ghosh
     </a>
     <nav>
-      <a href="../#thread">Thread</a>
-      <a href="../#writeups">Write-ups</a>
-      <a href="../#contact">Contact</a>
+      <a href="index.html#thread">Thread</a>
+      <a href="index.html#writeups">Write-ups</a>
+      <a href="index.html#contact">Contact</a>
     </nav>
   </div>
 </header>
@@ -31,90 +31,136 @@
 <main class="wrap article">
 
   <h1>Four years underwater</h1>
-  <p class="meta">Bremen UAS · TUHH smartPORT · Helmut Schmidt University · 2014–2018</p>
+  <p class="meta">Bremen UAS · smartPORT, TUHH · Helmut Schmidt Universität · 2014–2018</p>
 
   <p class="lede">
-    On a CV these are three separate entries at three institutions. They were one subject
-    approached from three directions: characterise the channel, transmit through it, then
+    On a CV these are three entries at three institutions. They were one subject approached from
+    three directions: work out what the channel does to a signal, transmit through it anyway, then
     pull a specific source back out of it.
   </p>
 
   <h3>The medium is the difficulty</h3>
 
   <p>
-    A water column is a hostile channel. Sound travels slowly enough that platform motion
-    produces significant Doppler. Sound speed varies with depth, temperature and salinity,
-    so rays bend. The surface and the seabed reflect, so every transmission arrives several
-    times with different delays and amplitudes. Ambient noise is non-stationary and often
-    biological. Almost everything that makes RF communication tractable is absent.
+    A water column is a hostile channel. Sound travels slowly enough that platform motion produces
+    significant Doppler. Sound speed varies with depth, temperature and salinity, so rays bend.
+    Surface and seabed reflect, so every transmission arrives several times at different delays and
+    amplitudes. Ambient noise is non-stationary and often biological — the shipping traffic and the
+    animals are both in your band. Almost everything that makes RF communication tractable is
+    absent.
   </p>
 
-  <h3>Characterising the channel — Bremen, 2014–2015</h3>
+  <h3>2014–15 — characterising the channel</h3>
 
   <p>
-    A project on channel state estimation in a water column, under Prof. Dr. Dieter Kraus.
-    The question is the one that underlies everything else: given what arrives at the
-    receiver, what can be said about the path it took? Estimate the channel, and the rest
-    becomes tractable. Fail to, and nothing downstream is reliable.
+    A project on channel state estimation in a water column at Bremen University of Applied
+    Sciences, under Prof. Dr. Dieter Kraus. The underlying question: given what arrives at the
+    receiver, what can be said about the path it took? Estimate the channel and the rest becomes
+    tractable. Fail to, and nothing downstream is reliable.
   </p>
 
-  <!-- TODO: if you still have plots from this, one impulse-response or multipath figure
-       would do more here than another paragraph. -->
+  <h3>2016–17 — transmitting through it</h3>
 
-  <h3>Transmitting through it — smartPORT, TUHH, 2016–2017</h3>
-
-  <p>
-    <em>Chirp Modulation for Resilient Underwater Acoustic Communication</em>, supervised by
-    Prof. Bernd-Christian Renner. I built a signal generation and evaluation framework for
-    underwater acoustic communication experiments and compared chirp modulation against
-    frequency shift keying.
+  <p class="meta" style="border:0; padding:0; margin-bottom:1.5rem;">
+    <em>Chirp Modulation for Resilient Underwater Acoustic Communication</em> · smartPORT, TUHH ·
+    supervised by Prof. Dr. Bernd-Christian Renner
   </p>
 
   <p>
-    Chirps spread a symbol across a band of frequencies over time. That makes them tolerant
-    of the frequency-selective fading a multipath channel produces, and it makes correlation
-    detection sharp. The measured result was a higher data rate together with better Doppler
-    resilience than FSK — the second part mattering more, because Doppler is the thing you
-    cannot design around when the platform is moving.
+    smartPORT operates micro autonomous underwater vehicles — small, cheap, low-powered, used for
+    things like pollution and oil-spill detection, port traffic monitoring and hull inspection.
+    Several of them have to synchronise before they can talk to each other, using packet-based
+    preamble detection. The group was using frequency shift keying, and multipath was smearing the
+    preamble boundary badly enough that detection was ambiguous.
   </p>
 
-  <h3>Pulling a source back out of it — passive sonar, 2017–2018</h3>
+  <p>
+    Chirp modulation spreads a symbol across a band of frequencies over time instead of sitting on
+    one carrier. Correlate a chirp against its template and you get a sharp peak. Correlate FSK and
+    you get a triangular region — which multipath distorts until no clear maximum survives. That
+    difference is the entire argument, and it is visible in a single plot.
+  </p>
+
+  <!-- TODO: the chirp-vs-FSK correlation figure. This is the most persuasive image in the whole
+       body of work — a clean peak against a smeared triangle. Nothing else on this site earns
+       its space as quickly. -->
+  <figure>
+    <img src="fig-chirp-vs-fsk.png" alt="Correlation output for chirp modulation against frequency shift keying under multipath.">
+    <figcaption>Fig. 1 — TODO: chirp correlation peak against the FSK triangle under multipath.</figcaption>
+  </figure>
 
   <p>
-    My master's thesis, <em>Source Separation and Echo Analysis of Underwater Acoustic
-    Signals of Whales</em>, supervised by Prof. Udo Zölzer and Carlos de Obaldía, at Helmut
-    Schmidt University. Passive sonar: no transmitter, only what arrives.
+    I built the signal generation algorithm and the evaluation chain, characterised the acoustic
+    modem and the Tiepie Handyscope instrumentation, and worked out a parameter set that held up.
+    Then tested it across four environments of increasing realism: a small container, a test tank,
+    Channel Harburg, and Außenmühle Lake. Simulation would have been easier and would have proved
+    less.
+  </p>
+
+  <p class="pull">
+    Preamble detection delay dropped from seconds to milliseconds against FSK, across ten
+    iterations, with robustness to both multipath and Doppler shift.
+  </p>
+
+  <p>
+    Two secondary results mattered more than they look. The time–bandwidth product turned out
+    proportional to power concentration in the main lobe, which is what let me choose parameters
+    deliberately rather than by sweep. And generation sampling could be reduced from 2 MHz to
+    500 kHz before spurious correlation peaks appeared around the true detection point — the
+    number that decides whether any of this ports to a Cortex M4 on a battery.
+  </p>
+
+  <h3>2017–18 — pulling a source back out of it</h3>
+
+  <p class="meta" style="border:0; padding:0; margin-bottom:1.5rem;">
+    <em>Source Separation and Echo Detection of Underwater Acoustic Signals of Whales</em> ·
+    Helmut Schmidt Universität · supervisor Carlos de Obaldía, M.Sc. · examiners Prof. Dr.-Ing.
+    habil. Udo Zölzer and Prof. Dr. Bernd-Christian Renner
+  </p>
+
+  <p>
+    Passive acoustic monitoring: no transmitter, only what arrives at the hydrophone. The recordings
+    contain several species at once, plus the ship the array is attached to. The goal was to detect
+    echolocation clicks of toothed whales and extract enough from each click to identify the
+    species.
+  </p>
+
+  <p>
+    Separation first — isolating clicks from whistles, creaks and other harmonic vocalisations using
+    generalised Wiener filtering, with non-negative matrix factorization, median filtering and
+    kernel additive modelling compared against each other by peak-to-noise ratio and
+    signal-to-distortion ratio.
+  </p>
+
+  <p>
+    Then three features from the separated clicks, because echo detection in the usual sense is not
+    available when you do not know where the source is:
   </p>
 
   <ul>
-    <li>Wiener-filter-based source separation to isolate whale signals from the surrounding
-        acoustic field.</li>
-    <li>Three qualitative features for click-based classification of toothed whales — the
-        classification problem being what a separation method is ultimately for.</li>
-    <li>Correlator-based analysis improved by mitigating phase-offset effects in the
-        received signal, which is where multipath quietly ruins detection.</li>
+    <li><strong>Echo decay time</strong>, via Hilbert transform analysis — which established that
+        each click pulse carries superimposed pulses inside it.</li>
+    <li><strong>A high- and low-energy split</strong> of each pulse, using continuous wavelet
+        analysis to find those inlying short-term pulses and the frequency bands they occupy.</li>
+    <li><strong>Click length</strong>, through a correlation technique adapted to exploit the
+        band limitation of each pulse.</li>
   </ul>
 
-  <p class="pull">
-    Everything I have done since is a version of this. Change the medium and the
-    instrument, and the question stays: what is really there, given a measurement that
-    only partly shows it?
+  <p>
+    The first feature is what made the other two possible. Finding structure inside what looked
+    like a single pulse changed the problem from measuring a click to decomposing one.
   </p>
 
   <h3>Where it went next</h3>
 
   <p>
     In 2025 I worked on Wi-Fi Channel State Information for passive environmental sensing —
-    estimating an RF channel and reading motion and presence out of how it changes. It is
-    the Bremen problem in a different medium, eleven years later. The propagation physics
-    differs; the estimation problem does not.
+    estimating an RF channel and reading motion and presence out of how it changes. It is the
+    Bremen problem in a different medium, eleven years later. The propagation physics differs.
+    The estimation problem does not.
   </p>
 
-  <!-- TODO: if any of this can be shown rather than described — a spectrogram, a
-       correlator output, a separation before/after — it belongs here. Even a plot
-       regenerated from scratch today is worth more than the paragraphs above. -->
-
-  <a class="backlink" href="../">← All write-ups</a>
+  <a class="backlink" href="index.html">← All write-ups</a>
 
 </main>
 
@@ -122,7 +168,7 @@
   <div class="wrap foot__inner">
     <p>Ankit Ghosh · Hamburg</p>
     <ul>
-      <li><a href="../assets/Ghosh_CV.pdf">CV (PDF)</a></li>
+      <li><a href="Ghosh_CV.pdf">CV (PDF)</a></li>
       <li><a href="https://github.com/arcan-3">GitHub</a></li>
       <li><a href="https://www.linkedin.com/in/ankit-ghosh">LinkedIn</a></li>
     </ul>
