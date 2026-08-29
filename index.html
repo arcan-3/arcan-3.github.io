@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ankit Ghosh — signal and image processing</title>
+<meta name="description" content="Machine learning on physical measurements: acoustic, optical and time-series. Write-ups on microscopy image analysis, underwater acoustics and industrial AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="mark" href="./">
+      <svg width="22" height="14" viewBox="0 0 22 14" fill="none" aria-hidden="true">
+        <path d="M1 7 H5 L7 2 L10 12 L13 5 L15 9 H21" stroke="#1FB6C4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Ankit Ghosh
+    </a>
+    <nav>
+      <a href="#thread">Thread</a>
+      <a href="#writeups">Write-ups</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================ HERO ============================ -->
+  <section class="wrap hero">
+    <h1>Getting structure back out of <span>noisy measurements.</span></h1>
+
+    <p class="lede narrow">
+      For twelve years I have worked on one problem in different physics: something
+      real is happening, the sensor gives you a degraded version of it, and you have
+      to recover enough to act on. Water columns, whale clicks, vibrating machinery,
+      living cells under a microscope that you are not allowed to illuminate properly.
+    </p>
+
+    <!-- SIGNATURE ELEMENT -->
+    <div class="scope">
+      <div class="scope__legend">
+        <span><i class="swatch swatch--noisy"></i> Measured</span>
+        <span><i class="swatch swatch--clean"></i> Recovered</span>
+      </div>
+
+      <svg id="scope" class="scope__frame" viewBox="0 0 1000 260" role="img"
+           aria-label="A waveform shown twice: the noisy measured version and a recovered version. A slider changes the signal-to-noise ratio.">
+        <path id="trace-noisy" fill="none" stroke="#5B6773" stroke-width="1" stroke-linejoin="round"/>
+        <path id="trace-clean" fill="none" stroke="#1FB6C4" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+
+      <div class="scope__controls">
+        <label for="snr">Signal-to-noise</label>
+        <input id="snr" type="range" min="-6" max="24" value="6" step="1">
+        <span class="scope__readout" id="snr-readout">6 dB</span>
+      </div>
+
+      <p class="scope__note">
+        Drag it down. The measurement falls apart long before the underlying signal does.
+        Low-dose imaging, passive sonar and a bearing failing inside a running machine are all
+        this picture. The recovery drawn here is a sliding quadratic fit — a deliberately
+        trivial method, because the figure is about the problem, not about the answer.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ THREAD ============================ -->
+  <section class="wrap band" id="thread">
+    <p class="eyebrow">The same problem, four media</p>
+    <h2>One question, twelve years</h2>
+    <p class="narrow" style="margin-bottom:2.5rem">
+      These look like unrelated fields on a CV. They are the same estimation problem
+      with the physics swapped out.
+    </p>
+
+    <ul class="thread">
+      <li>
+        <span class="yr">2014 — 2015</span>
+        <span class="what">Channel estimation in a water column</span>
+        <span class="med">Bremen UAS · acoustic propagation</span>
+      </li>
+      <li>
+        <span class="yr">2016 — 2018</span>
+        <span class="what">Underwater communication, then passive sonar</span>
+        <span class="med">TUHH smartPORT · Helmut Schmidt University</span>
+      </li>
+      <li>
+        <span class="yr">2019 — 2024</span>
+        <span class="what">Live-cell microscopy under photon limits</span>
+        <span class="med">Universität Hamburg · doctorate</span>
+      </li>
+      <li>
+        <span class="yr">2021 — now</span>
+        <span class="what">Industrial sensor data and RF sensing</span>
+        <span class="med">Metric-space · Aidy Health · BATO</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============================ WRITE-UPS ============================ -->
+  <section class="wrap band" id="writeups">
+    <p class="eyebrow">Write-ups</p>
+    <h2>Work in more detail than a CV allows</h2>
+    <p class="narrow" style="margin-bottom:2.5rem">
+      Longer accounts of what the problem actually was, what I tried, and what did not work.
+    </p>
+
+    <div class="cards">
+      <a class="card" href="projects/amp-toolkit.html">
+        <span class="tag">Doctoral work · 2019–2024</span>
+        <h3>Staging cell division from live-cell microscopy</h3>
+        <p>Tracking many near-identical objects across time-lapse volumes acquired at
+           deliberately low illumination, and constraining the model so it cannot predict
+           a biologically impossible sequence.</p>
+      </a>
+
+      <a class="card" href="projects/underwater-acoustics.html">
+        <span class="tag">2014–2018</span>
+        <h3>Four years underwater</h3>
+        <p>Channel estimation, chirp modulation for Doppler-resilient communication, and
+           separating whale clicks from a multipath channel. Where the rest of the work
+           came from.</p>
+      </a>
+
+      <!-- Duplicate projects/_template.html for each new write-up.
+           Remove card--soon once the page exists. -->
+      <a class="card card--soon" href="#">
+        <span class="tag">Essay</span>
+        <h3>Why acoustic, optical and RF are the same job</h3>
+        <p>In progress.</p>
+      </a>
+
+      <a class="card card--soon" href="#">
+        <span class="tag">Industrial AI</span>
+        <h3>Deploying models where there is no cloud</h3>
+        <p>In progress.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================ CONTACT ============================ -->
+  <section class="wrap band" id="contact">
+    <p class="eyebrow">Contact</p>
+    <h2>Hamburg, Germany</h2>
+    <p class="narrow">
+      I lead industrial AI at BATO GmbH. I am interested in work on image formation,
+      signal recovery and sensing — particularly where the measurement itself is the
+      hard part.
+    </p>
+    <p><a href="mailto:ankit.ghosh@protonmail.com">ankit.ghosh@protonmail.com</a></p>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <p>Ankit Ghosh · Hamburg</p>
+    <ul>
+      <!-- TODO: export the Awesome-CV PDF into assets/ and keep this link current. -->
+      <li><a href="assets/Ghosh_CV.pdf">CV (PDF)</a></li>
+      <li><a href="https://github.com/arcan-3">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/ankit-ghosh">LinkedIn</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="assets/signal.js"></script>
+</body>
+</html>

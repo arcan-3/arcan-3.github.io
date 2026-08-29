@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Four years underwater — Ankit Ghosh</title>
+<meta name="description" content="Channel estimation, chirp-modulated communication and passive sonar source separation, 2014–2018.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="mark" href="../">
+      <svg width="22" height="14" viewBox="0 0 22 14" fill="none" aria-hidden="true">
+        <path d="M1 7 H5 L7 2 L10 12 L13 5 L15 9 H21" stroke="#1FB6C4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Ankit Ghosh
+    </a>
+    <nav>
+      <a href="../#thread">Thread</a>
+      <a href="../#writeups">Write-ups</a>
+      <a href="../#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap article">
+
+  <h1>Four years underwater</h1>
+  <p class="meta">Bremen UAS · TUHH smartPORT · Helmut Schmidt University · 2014–2018</p>
+
+  <p class="lede">
+    On a CV these are three separate entries at three institutions. They were one subject
+    approached from three directions: characterise the channel, transmit through it, then
+    pull a specific source back out of it.
+  </p>
+
+  <h3>The medium is the difficulty</h3>
+
+  <p>
+    A water column is a hostile channel. Sound travels slowly enough that platform motion
+    produces significant Doppler. Sound speed varies with depth, temperature and salinity,
+    so rays bend. The surface and the seabed reflect, so every transmission arrives several
+    times with different delays and amplitudes. Ambient noise is non-stationary and often
+    biological. Almost everything that makes RF communication tractable is absent.
+  </p>
+
+  <h3>Characterising the channel — Bremen, 2014–2015</h3>
+
+  <p>
+    A project on channel state estimation in a water column, under Prof. Dr. Dieter Kraus.
+    The question is the one that underlies everything else: given what arrives at the
+    receiver, what can be said about the path it took? Estimate the channel, and the rest
+    becomes tractable. Fail to, and nothing downstream is reliable.
+  </p>
+
+  <!-- TODO: if you still have plots from this, one impulse-response or multipath figure
+       would do more here than another paragraph. -->
+
+  <h3>Transmitting through it — smartPORT, TUHH, 2016–2017</h3>
+
+  <p>
+    <em>Chirp Modulation for Resilient Underwater Acoustic Communication</em>, supervised by
+    Prof. Bernd-Christian Renner. I built a signal generation and evaluation framework for
+    underwater acoustic communication experiments and compared chirp modulation against
+    frequency shift keying.
+  </p>
+
+  <p>
+    Chirps spread a symbol across a band of frequencies over time. That makes them tolerant
+    of the frequency-selective fading a multipath channel produces, and it makes correlation
+    detection sharp. The measured result was a higher data rate together with better Doppler
+    resilience than FSK — the second part mattering more, because Doppler is the thing you
+    cannot design around when the platform is moving.
+  </p>
+
+  <h3>Pulling a source back out of it — passive sonar, 2017–2018</h3>
+
+  <p>
+    My master's thesis, <em>Source Separation and Echo Analysis of Underwater Acoustic
+    Signals of Whales</em>, supervised by Prof. Udo Zölzer and Carlos de Obaldía, at Helmut
+    Schmidt University. Passive sonar: no transmitter, only what arrives.
+  </p>
+
+  <ul>
+    <li>Wiener-filter-based source separation to isolate whale signals from the surrounding
+        acoustic field.</li>
+    <li>Three qualitative features for click-based classification of toothed whales — the
+        classification problem being what a separation method is ultimately for.</li>
+    <li>Correlator-based analysis improved by mitigating phase-offset effects in the
+        received signal, which is where multipath quietly ruins detection.</li>
+  </ul>
+
+  <p class="pull">
+    Everything I have done since is a version of this. Change the medium and the
+    instrument, and the question stays: what is really there, given a measurement that
+    only partly shows it?
+  </p>
+
+  <h3>Where it went next</h3>
+
+  <p>
+    In 2025 I worked on Wi-Fi Channel State Information for passive environmental sensing —
+    estimating an RF channel and reading motion and presence out of how it changes. It is
+    the Bremen problem in a different medium, eleven years later. The propagation physics
+    differs; the estimation problem does not.
+  </p>
+
+  <!-- TODO: if any of this can be shown rather than described — a spectrogram, a
+       correlator output, a separation before/after — it belongs here. Even a plot
+       regenerated from scratch today is worth more than the paragraphs above. -->
+
+  <a class="backlink" href="../">← All write-ups</a>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <p>Ankit Ghosh · Hamburg</p>
+    <ul>
+      <li><a href="../assets/Ghosh_CV.pdf">CV (PDF)</a></li>
+      <li><a href="https://github.com/arcan-3">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/ankit-ghosh">LinkedIn</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>

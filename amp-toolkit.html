@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Staging cell division from live-cell microscopy — Ankit Ghosh</title>
+<meta name="description" content="The aMP Toolkit: tracking and staging meiosis in live-cell confocal microscopy under photon-limited acquisition.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="mark" href="../">
+      <svg width="22" height="14" viewBox="0 0 22 14" fill="none" aria-hidden="true">
+        <path d="M1 7 H5 L7 2 L10 12 L13 5 L15 9 H21" stroke="#1FB6C4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Ankit Ghosh
+    </a>
+    <nav>
+      <a href="../#thread">Thread</a>
+      <a href="../#writeups">Write-ups</a>
+      <a href="../#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap article">
+
+  <h1>Staging cell division from live-cell microscopy</h1>
+  <p class="meta">Doctoral work · Universität Hamburg · 2019–2024 · advisor Prof. Dr. Arp Schnittger</p>
+
+  <p class="lede">
+    Meiosis was staged by eye. An expert watched a time-lapse, decided which stage each
+    cell was in, and wrote it down. That does not scale, and two experts do not always
+    agree. The aMP Toolkit was an attempt to do it automatically, on imaging that is
+    deliberately worse than it could be.
+  </p>
+
+  <h3>The constraint that shapes everything</h3>
+
+  <p>
+    Live-cell fluorescence imaging has a tension built into it. More illumination gives
+    you a better signal-to-noise ratio, and also bleaches the fluorophore and damages the
+    cell you are trying to watch. If you image a dividing cell properly, you stop it from
+    dividing. So every usable acquisition is deliberately under-illuminated, and every
+    method downstream has to work on data that a computer vision benchmark would consider
+    unacceptable.
+  </p>
+
+  <p class="pull">
+    This is the same trade-off as dose reduction in medical imaging. Photons are the
+    budget, and the budget is set by what the subject can survive.
+  </p>
+
+  <h3>Why frame-by-frame classification fails</h3>
+
+  <p>
+    The obvious approach is to segment each frame, classify each cell, and stack the
+    results. It does not work, for two reasons that took a while to separate.
+  </p>
+
+  <p>
+    The first is identity. Meiocytes look alike, sit in dense clusters, and move between
+    frames. A tracker that loses an identity and picks up its neighbour produces a
+    trajectory that is a blend of two cells, which is worse than no trajectory at all —
+    it is confidently wrong. Object switching was the dominant failure mode throughout.
+  </p>
+
+  <p>
+    The second is that stage assignments from independent frames produce sequences that
+    are biologically impossible: a cell that appears to move backwards through the
+    progression, or skip a stage and return to it. Each individual prediction is
+    plausible; the sequence is nonsense.
+  </p>
+
+  <!-- TODO: this is where a figure earns its place.
+       Suggested: a strip of frames with per-frame predictions above and the
+       state-constrained output below, so the reader sees the impossible transitions
+       disappear. Export at ~1600px wide, put it in ../assets/. -->
+  <figure>
+    <img src="../assets/fig-staging.png" alt="Per-frame predictions compared with state-constrained output across a time-lapse sequence.">
+    <figcaption>
+      Fig. 1 — TODO: replace with the real figure. Per-frame prediction against
+      state-constrained output on the same sequence.
+    </figcaption>
+  </figure>
+
+  <h3>What the toolkit does</h3>
+
+  <ul>
+    <li><strong>Domain-adapted segmentation with stabilisation.</strong> A segmentation
+        network adapted to the imaging conditions, coupled with video stabilisation and
+        multi-view reconstruction so that a cell keeps its identity across frames.</li>
+    <li><strong>3D position and pose estimation.</strong> Cells are localised and oriented
+        in the volume rather than in a single projection, which makes tracking robust when
+        the viewpoint or the cell's orientation changes.</li>
+    <li><strong>State-based temporal modelling.</strong> Stage assignment is constrained to
+        valid transitions rather than being decided per frame. This is the part that turned
+        a noisy classifier into something an expert would accept.</li>
+  </ul>
+
+  <h3>Adapting a foundation model where labels are scarce</h3>
+
+  <p>
+    Alongside the staging work, I fine-tuned the Segment Anything Model for a set of
+    plant-science segmentation tasks — root length, leaf chlorosis, BiFC analysis, foci
+    quantification. These have almost no labelled data and imaging characteristics far
+    from anything in SAM's pretraining distribution. The interesting result was how little
+    supervision it took to make it useful, which matters for any domain where annotation
+    requires an expert rather than a crowd worker.
+  </p>
+
+  <h3>What I would do differently</h3>
+
+  <!-- TODO: this section is what separates a real write-up from a portfolio blurb.
+       Be specific and be honest about the dead ends. A reviewer trusts a page that
+       admits what failed far more than one that only lists what worked. -->
+  <p>
+    TODO — write this properly. The candidates: how much time went into segmentation before
+    it was clear that tracking was the real bottleneck; whether the staging model should
+    have been trained end-to-end rather than as a pipeline; what the inter-expert agreement
+    baseline actually was and whether it was measured early enough to be useful.
+  </p>
+
+  <h3>Continuation</h3>
+
+  <p>
+    From October 2024 to February 2025 I continued as a postdoctoral researcher on
+    unsupervised staging of maize meiocytes — the same problem in a species and imaging
+    setup outside the original work, without relying on staged labels at all.
+  </p>
+
+  <!-- TODO: if code or the dissertation can be published, link them here.
+       A repository someone can read is worth more than this page. -->
+
+  <a class="backlink" href="../">← All write-ups</a>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <p>Ankit Ghosh · Hamburg</p>
+    <ul>
+      <li><a href="../assets/Ghosh_CV.pdf">CV (PDF)</a></li>
+      <li><a href="https://github.com/arcan-3">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/ankit-ghosh">LinkedIn</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
