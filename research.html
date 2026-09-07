@@ -42,14 +42,14 @@
 <main>
   <section class="hero" style="padding:78px 0 34px">
     <div class="wrap" style="text-align:left">
-      <div class="kicker">Research · 2013 — 2025</div>
+      <div class="kicker">Research · 2013 — <span lang="en">present</span><span lang="de">heute</span></div>
       <h1 style="font-size:clamp(36px,5.4vw,74px);margin-top:18px">
         <span lang="en">Structure out of<br /><em>noise</em>.</span>
         <span lang="de">Struktur aus<br /><em>Rauschen</em>.</span>
       </h1>
       <p class="lede" style="margin-left:0;text-align:left">
-        <span lang="en">A doctorate on automated staging of meiosis from live-cell confocal microscopy, and earlier work on underwater acoustics — source separation of whale echolocation clicks, and chirp modulation for micro autonomous underwater vehicles.</span>
-        <span lang="de">Eine Promotion zum automatisierten Staging der Meiose aus konfokaler Lebendzell-Mikroskopie sowie frühere Arbeiten zur Unterwasserakustik — Source Separation von Echoortungsklicks der Wale und Chirp-Modulation für autonome Kleinst-Unterwasserfahrzeuge.</span>
+        <span lang="en">A doctorate on automated staging of meiosis from live-cell confocal microscopy, earlier work on underwater acoustics — source separation of whale echolocation clicks, chirp modulation for micro autonomous underwater vehicles — and, since 2025, applied LLM systems for industrial knowledge.</span>
+        <span lang="de">Eine Promotion zum automatisierten Staging der Meiose aus konfokaler Lebendzell-Mikroskopie, frühere Arbeiten zur Unterwasserakustik — Source Separation von Echoortungsklicks der Wale und Chirp-Modulation für autonome Kleinst-Unterwasserfahrzeuge — sowie seit 2025 angewandte LLM-Systeme für industrielles Wissen.</span>
       </p>
     </div>
   </section>
@@ -173,7 +173,35 @@
 
   <section>
     <div class="wrap">
-      <div class="sec-head rv"><span class="n">03</span><h2><span lang="en">Selected activities &amp; awards</span><span lang="de">Ausgewählte Aktivitäten &amp; Auszeichnungen</span></h2><span class="fill"></span></div>
+      <div class="sec-head rv"><span class="n">03</span><h2><span lang="en">Applied systems</span><span lang="de">Angewandte Systeme</span></h2><span class="fill"></span></div>
+      <div class="pub rv">
+        <div class="meta kicker">BATO GmbH · <span lang="en">2025 — present</span><span lang="de">2025 — heute</span></div>
+        <h3><span lang="en">Grounded LLM systems for industrial knowledge</span><span lang="de">Verankerte LLM-Systeme für industrielles Wissen</span></h3>
+        <p class="where"><span lang="en">Design and delivery of retrieval-grounded language systems for process manufacturing, deployed on private infrastructure. Client and product specifics are under NDA; what follows is the approach.</span><span lang="de">Entwurf und Umsetzung retrieval-verankerter Sprachsysteme für die Prozessfertigung, deployt auf privater Infrastruktur. Kunden- und Produktdetails unterliegen einer Vertraulichkeitsvereinbarung; im Folgenden nur der Ansatz.</span></p>
+        <ul lang="en" style="margin-top:20px;padding-left:19px;color:var(--ink-2)">
+          <li><strong>The model proposes, deterministic logic decides.</strong> A language model is good at estimating which of several candidate actions is informative and bad at being accountable for the choice. Keeping selection in an explicit, inspectable scoring layer is what makes the behaviour reviewable — and what makes a failure diagnosable rather than mysterious.</li>
+          <li><strong>Grounding is a corpus problem before it is a model problem.</strong> Retrieval quality over plant documentation depends on what is allowed into the corpus, so nothing becomes retrievable without human approval. Hybrid dense and lexical retrieval, because industrial text is full of part numbers and codes that embeddings handle poorly.</li>
+          <li><strong>Provenance is the deliverable.</strong> An answer without a traceable source is not usable in a plant. Every derived claim carries where it came from, and a specialist reviews proposed relations before they count as established.</li>
+          <li><strong>Deployment constraints are design constraints.</strong> Local inference on owned GPUs, read-only integration with control systems, isolated storage. These are not hardening applied afterwards — they determine the architecture, and they are what makes the confidentiality guarantee real rather than contractual.</li>
+          <li><strong>Continuity with the classical side.</strong> The retrieval layer is only useful because the time-series and signal work makes machine behaviour legible in the first place; anomaly scores become actionable when they can be linked to the documentation and the sensors implicated in them.</li>
+        </ul>
+        <ul lang="de" style="margin-top:20px;padding-left:19px;color:var(--ink-2)">
+          <li><strong>Das Modell schlägt vor, deterministische Logik entscheidet.</strong> Ein Sprachmodell kann gut einschätzen, welche von mehreren Handlungsoptionen informativ ist, und schlecht für die Wahl verantwortlich sein. Die Auswahl in einer expliziten, prüfbaren Scoring-Schicht zu halten, macht das Verhalten überprüfbar — und einen Fehler diagnostizierbar statt rätselhaft.</li>
+          <li><strong>Grounding ist zuerst ein Korpus-, dann ein Modellproblem.</strong> Die Retrieval-Qualität über Anlagendokumentation hängt davon ab, was in den Korpus gelangt; daher wird nichts abrufbar ohne menschliche Freigabe. Hybrides dichtes und lexikalisches Retrieval, weil Industrietexte voller Teilenummern und Codes sind, mit denen Embeddings schlecht umgehen.</li>
+          <li><strong>Provenienz ist das Ergebnis.</strong> Eine Antwort ohne nachvollziehbare Quelle ist im Werk nicht verwendbar. Jede abgeleitete Aussage trägt ihre Herkunft, und eine Fachperson prüft vorgeschlagene Beziehungen, bevor sie als belegt gelten.</li>
+          <li><strong>Deployment-Randbedingungen sind Entwurfsrandbedingungen.</strong> Lokale Inferenz auf eigenen GPUs, rein lesende Anbindung an Leitsysteme, isolierte Speicherung. Das ist keine nachträgliche Härtung — es bestimmt die Architektur und macht die Vertraulichkeitszusage real statt nur vertraglich.</li>
+          <li><strong>Kontinuität zur klassischen Seite.</strong> Die Retrieval-Schicht ist nur nützlich, weil die Zeitreihen- und Signalarbeit das Maschinenverhalten überhaupt lesbar macht; Anomalie-Scores werden handlungsfähig, wenn sie mit der Dokumentation und den betroffenen Sensoren verknüpft werden können.</li>
+        </ul>
+        <div class="pub-foot">
+          <a class="chip" href="work.html"><span lang="en">Role detail</span><span lang="de">Rolle im Detail</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head rv"><span class="n">04</span><h2><span lang="en">Selected activities &amp; awards</span><span lang="de">Ausgewählte Aktivitäten &amp; Auszeichnungen</span></h2><span class="fill"></span></div>
       <div class="grid-3 rv">
         <div class="card">
           <div class="meta">Apr. — Jul. 2016 · Barcelona / Bydgoszcz</div>

@@ -53,23 +53,25 @@
       <div class="tl">
       <div class="tl-item rv now">
         <div class="tl-when">Feb. 2025 — Present</div>
-        <h3><span lang="en">Machine Learning Engineer, Industrial AI — Technical Lead</span><span lang="de">Machine Learning Engineer, Industrial AI — Technical Lead</span></h3>
+        <h3><span lang="en">Technical Lead, Industrial AI — Machine Learning Engineer</span><span lang="de">Technical Lead, Industrial AI — Machine Learning Engineer</span></h3>
         <div class="tl-org">BATO GmbH <span class="loc">(spun out of Hummingbird Converting Solutions)</span> <span class="loc">· Hamburg, Germany</span></div>
         <ul lang="en">
-          <li>Lead industrial AI development for printing and process manufacturing: predictive maintenance, anomaly detection, production optimisation and operator decision support.</li>
+          <li>Set the reference architecture for BATO’s AI products and own it end to end — model and inference topology, data layer, deployment boundary and security model — then build against it as primary engineer.</li>
+          <li>Led a voice-enabled, German-first LLM system for capturing tacit operator knowledge in process manufacturing, taken from concept to a supported private pilot.</li>
+          <li>Designed it so the model proposes and deterministic logic decides, with human-in-the-loop review and explicit participant consent and release as architectural properties rather than policy.</li>
+          <li>Implemented the stack — LLM orchestration, hybrid dense and lexical retrieval, multilingual speech-to-text and text-to-speech, relational system of record with a knowledge-graph projection — deployed on private GPU infrastructure with local inference, so participant data never leaves the controlled environment.</li>
+          <li>Own the architecture of <strong>BATO Verse</strong>, a tenant-aware industrial knowledge platform (FastAPI, PostgreSQL/pgvector, Neo4j, TimescaleDB, MinIO, Docker), whose retrieval workflows link time-series anomalies to technical manuals and operator knowledge to identify probable fault sources and suspect sensors.</li>
           <li>Built a production copilot for a six-colour rotogravure printing line, combining machine settings, quality parameters, sensor data and deterministic process knowledge into operator recommendations.</li>
-          <li>Own the architecture of <strong>BATO Verse</strong>, a tenant-aware industrial knowledge platform (FastAPI, PostgreSQL/pgvector, Neo4j, TimescaleDB, MinIO, Docker).</li>
-          <li>Built LLM-based retrieval workflows linking time-series anomalies to technical manuals and troubleshooting knowledge to identify probable fault sources and suspect sensors.</li>
-          <li>Developed a multilingual AI interview system (speech recognition, text-to-speech, locally hosted LLMs) that captures expert operator knowledge as structured knowledge-graph content.</li>
-          <li>Designed secure on-premise GPU architectures with read-only PLC/SCADA integration, local inference and isolated storage, with no external cloud dependency for production data.</li>
+          <li>Design secure on-premise architectures with read-only PLC/SCADA integration, local inference and isolated storage — no external cloud dependency for production data — and produce the hardware-sizing and security-boundary documentation customer IT and works councils require before deployment.</li>
         </ul>
         <ul lang="de">
-          <li>Leitung der Industrial-AI-Entwicklung für Druck- und Prozessfertigung: Predictive Maintenance, Anomaly Detection, Produktionsoptimierung und Entscheidungsunterstützung für Bediener.</li>
+          <li>Festlegung der Referenzarchitektur für die KI-Produkte von BATO und deren durchgängige Verantwortung — Modell- und Inferenztopologie, Datenschicht, Deployment-Grenze und Sicherheitsmodell — mit anschließender Umsetzung als leitender Entwickler.</li>
+          <li>Leitung eines deutschsprachigen, sprachfähigen LLM-Systems zur Erfassung impliziten Bedienerwissens in der Prozessfertigung — vom Konzept bis in einen begleiteten geschlossenen Pilotbetrieb.</li>
+          <li>Systementwurf nach dem Prinzip, dass das Modell vorschlägt und deterministische Logik entscheidet, mit Human-in-the-Loop-Prüfung sowie ausdrücklicher Einwilligung und Freigabe der Teilnehmenden als architektonische Eigenschaften und nicht als Richtlinie.</li>
+          <li>Umsetzung des Stacks — LLM-Orchestrierung, hybrides dichtes und lexikalisches Retrieval, mehrsprachige Speech-to-Text- und Text-to-Speech-Verarbeitung, relationales System of Record mit Knowledge-Graph-Projektion — deployt auf privater GPU-Infrastruktur mit lokaler Inferenz, sodass Teilnehmerdaten die kontrollierte Umgebung nicht verlassen.</li>
+          <li>Architekturverantwortung für <strong>BATO Verse</strong>, eine mandantenfähige industrielle Wissensplattform (FastAPI, PostgreSQL/pgvector, Neo4j, TimescaleDB, MinIO, Docker), deren Retrieval-Workflows Zeitreihen-Anomalien mit technischen Handbüchern und Bedienerwissen verknüpfen, um wahrscheinliche Fehlerquellen und verdächtige Sensoren zu bestimmen.</li>
           <li>Aufbau eines Produktions-Copiloten für eine Sechsfarben-Rotationstiefdruckanlage: Maschineneinstellungen, Qualitätsparameter, Sensordaten und deterministisches Prozesswissen werden zu Handlungsempfehlungen zusammengeführt.</li>
-          <li>Architekturverantwortung für <strong>BATO Verse</strong>, eine mandantenfähige industrielle Wissensplattform (FastAPI, PostgreSQL/pgvector, Neo4j, TimescaleDB, MinIO, Docker).</li>
-          <li>Aufbau LLM-basierter Retrieval-Workflows, die Zeitreihen-Anomalien mit technischen Handbüchern und Störungswissen verknüpfen, um wahrscheinliche Fehlerquellen und verdächtige Sensoren zu bestimmen.</li>
-          <li>Entwicklung eines mehrsprachigen KI-Interviewsystems (Spracherkennung, Text-to-Speech, lokal gehostete LLMs), das Expertenwissen von Bedienern als strukturierten Knowledge-Graph erfasst.</li>
-          <li>Entwurf sicherer On-Premise-GPU-Architekturen mit rein lesender PLC/SCADA-Anbindung, lokaler Inferenz und isolierter Speicherung — ohne externe Cloud-Abhängigkeit für Produktionsdaten.</li>
+          <li>Entwurf sicherer On-Premise-Architekturen mit rein lesender PLC/SCADA-Anbindung, lokaler Inferenz und isolierter Speicherung — ohne externe Cloud-Abhängigkeit für Produktionsdaten — sowie Erstellung der Unterlagen zu Hardware-Sizing und Sicherheitsgrenzen, die Kunden-IT und Betriebsräte vor dem Deployment verlangen.</li>
         </ul>
       </div>
 
@@ -95,11 +97,11 @@
         <div class="tl-org">Metric-space <span class="loc">(AI division, spun out of PANDA GmbH)</span> <span class="loc">· Hamburg, Germany</span></div>
         <ul lang="en">
           <li>Built and deployed <strong>vibroacoustic predictive maintenance (v1.0)</strong> for rotating machinery, from raw sensor data through model development to production release.</li>
-          <li>Developed real-time acoustic event detection for vehicle tampering on Jetson Xavier NX, using wavelet-decomposition-based preprocessing to meet latency targets on edge hardware under variable ambient noise.</li>
+          <li>Developed real-time acoustic event detection for vehicle tampering on Jetson Xavier NX, using wavelet-decomposition preprocessing to meet latency targets on edge hardware.</li>
           <li>Designed an unsupervised forecasting and clustering method combining Meta’s Encodec with the PHATE algorithm, reducing inference latency on large-scale time-series and surfacing latent regime structure.</li>
-          <li>Built an unsupervised clustering and labelling toolbox for equine gait analysis, classifying movement anomalies across multi-view video to identify lameness indicators.</li>
-          <li>Deployed ensemble adaptive-threshold anomaly detection on infrared imagery using the CFLOW anomaly foundation model for real-time industrial inspection.</li>
-          <li>Implemented an LLM chatbot over time-series datasets using OpenAI function calling, letting analysts query and interrogate data conversationally.</li>
+          <li>Built an unsupervised clustering and labelling toolbox for equine gait analysis, classifying movement anomalies across multi-view video.</li>
+          <li>Deployed ensemble adaptive-threshold anomaly detection on infrared imagery using the CFLOW anomaly foundation model.</li>
+          <li>Integrated OpenAI function calling into a conversational interface over time-series datasets, letting analysts query and interrogate data directly.</li>
         </ul>
         <ul lang="de">
           <li>Aufbau und Deployment von <strong>vibroakustischer Predictive Maintenance (v1.0)</strong> für rotierende Maschinen — von Rohsensordaten über die Modellentwicklung bis zum Produktionsrelease.</li>

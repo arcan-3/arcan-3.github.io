@@ -14,7 +14,7 @@
 }
 html[data-theme="light"]{
   --bg:#f2efe8; --bg-2:#e9e5db; --panel:rgba(11,18,38,.03);
-  --ink:#141a2b; --ink-2:#3d4658; --ink-3:#6b7688;
+  --ink:#141a2b; --ink-2:#3d4658; --ink-3:#565f70;
   --cy:#0e7d78; --cy-dim:rgba(14,125,120,.35); --cy-faint:rgba(14,125,120,.09);
   --mg:#a8266f; --mg-dim:rgba(168,38,111,.3);
   --line:rgba(20,26,43,.12);
